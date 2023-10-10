@@ -54,7 +54,7 @@
                 <div class="row align-items-center justify-content-md-between pb-4">
                     <div class="col-md-6">
                         <div class="copyright text-sm font-weight-bold text-center text-md-left">
-                            &copy; 2023
+                            &copy; 2023-2023
                         </div>
                     </div>
                     <div class="col-md-6">
