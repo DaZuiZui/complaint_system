@@ -12,11 +12,17 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * @author Bryan yang 2023-10-10
+ * Jwt工具类主要功能有生成密钥和解析密钥
+ */
 public class JwtUtil {
 
     /**
-     * 生成密文
-     * @return
+     * @author Bryan yang 2023-10-10
+     * 生成密钥
+     * @param user User.class
+     * @return String.class
      */
     public static String createJWT(User user){
         //构建jwt令牌
@@ -44,7 +50,8 @@ public class JwtUtil {
     }
 
     /**
-     * 解析
+     * @author Bryan yang 2023-10-10
+     * 解析密钥
      * @param token
      * @return
      */
