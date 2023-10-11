@@ -19,7 +19,7 @@
         </div>
         <a class="btn btn-block btn-dark text-truncate rounded-0 py-2 d-none d-lg-block"
             style="z-index: 1000;color:aliceblue" target="_blank">
-            哈尔滨广厦学院 <strong>查重系统 </strong> 测试版本 v0.1
+            哈尔滨广厦学院 <strong>投诉系统 </strong> 测试版本 v0.1
         </a>
 
         <div>
