@@ -23,7 +23,7 @@ public class AdminController {
 
     /**
      * @Auther Oh… Yeah!!! 2023-10-11
-     * 管理员登录验证
+     *      管理员登录验证
      *      首先查看是否账号密码一致，如果一致则登入成功，返回给前端jwt。
      * @param
      * @return String.classs
