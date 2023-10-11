@@ -8,6 +8,10 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * 2023-10-11
+ * 管理员版块接口
+ */
 @CrossOrigin
 @Api(value = "管理员版块接口",tags = {"管理员版块接口"})
 @RestController
@@ -16,6 +20,7 @@ public class AdminController {
 
     @Autowired
     private AdminService adminService;
+
     /**
      * @Auther Oh… Yeah!!! 2023-10-11
      * 管理员登录验证
