@@ -1,3 +1,3 @@
 <template>
-    <div>投诉管理</div>
+    <div>投诉管1理</div>
 </template>

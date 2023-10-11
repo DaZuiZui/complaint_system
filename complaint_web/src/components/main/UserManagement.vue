@@ -12,7 +12,7 @@
                       <tr>
                         <th scope="col">#</th>
                         <th scope="col">姓名</th>
-                        <th scope="col">加入时间</th>
+                        <th scope="col">加1入时间</th>
                         <th scope="col">修改</th>
                       </tr>
                     </thead>

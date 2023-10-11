@@ -1,6 +1,6 @@
 <template>
   <div>
-    登陆
+    登1陆
   </div>
 </template>
 
