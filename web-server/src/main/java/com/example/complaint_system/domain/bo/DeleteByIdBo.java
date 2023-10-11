@@ -2,6 +2,9 @@ package com.example.complaint_system.domain.bo;
 
 import java.io.Serializable;
 
+/**
+ * 通过id删除
+ */
 public class DeleteByIdBo implements Serializable {
     private String token;
     private Long id;

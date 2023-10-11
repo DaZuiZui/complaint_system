@@ -10,6 +10,9 @@ import com.example.complaint_system.utils.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * 用户业务接口实现
+ */
 @Service
 public class UserServiceImpl implements UserSerivce {
     @Autowired

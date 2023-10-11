@@ -10,7 +10,6 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface AdminMapper {
 
-
     /**
      * @Auther Oh… Yeah!!! 2023-10-11
      *      管理员登录验证

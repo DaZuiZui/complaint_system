@@ -2,6 +2,9 @@ package com.example.complaint_system.domain.bo;
 
 import java.io.Serializable;
 
+/**
+ * 管理员登入Bo
+ */
 public class AdminLoginBo implements Serializable{
     private String token;
     private String username;

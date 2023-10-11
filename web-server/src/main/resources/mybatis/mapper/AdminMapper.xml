@@ -9,14 +9,14 @@
     -->
     <select id="adminLogin" resultType="com.example.complaint_system.domain.User"
             parameterType="com.example.complaint_system.domain.bo.AdminLoginBo">
-        select *
-        from user
+        select
+               *
+        from
+             user
         where
         <if test="username != null and username != ''">
             username = #{username} limit 1
         </if>
-
-
 </select>
 
 
