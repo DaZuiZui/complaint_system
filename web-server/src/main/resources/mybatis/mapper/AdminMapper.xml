@@ -14,9 +14,10 @@
         from
              user
         where
-        <if test="username != null and username != ''">
-            username = #{username} limit 1
-        </if>
+            username = #{username} and
+            status = 0 and
+            del_flag = 0
+        limit 1
 </select>
 
 
