@@ -9,35 +9,40 @@ import java.util.Date;
 public class User implements Serializable {
     private Long id;
     private String username;
-    private Long createBy;
     private String password;
     private String name;
+    private Integer role;
     private Integer college;
     private Integer org;
+    private String grade;
+    private String studentId;
     private Date createTime;
+    private Long createBy;
     private Long updateBy;
     private Date updateTime;
     private Integer status;
     private Integer delFlag;
-    private Integer role;
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", createBy=" + createBy +
-                ", password='" + password + '\'' +
-                ", name='" + name + '\'' +
-                ", college=" + college +
-                ", org=" + org +
-                ", createTime=" + createTime +
-                ", updateBy=" + updateBy +
-                ", updateTime=" + updateTime +
-                ", status=" + status +
-                ", delFlag=" + delFlag +
-                ", role=" + role +
-                '}';
+
+    public User() {
+    }
+
+    public User(Long id, String username, String password, String name, Integer role, Integer college, Integer org, String grade, String studentId, Date createTime, Long createBy, Long updateBy, Date updateTime, Integer status, Integer delFlag) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.name = name;
+        this.role = role;
+        this.college = college;
+        this.org = org;
+        this.grade = grade;
+        this.studentId = studentId;
+        this.createTime = createTime;
+        this.createBy = createBy;
+        this.updateBy = updateBy;
+        this.updateTime = updateTime;
+        this.status = status;
+        this.delFlag = delFlag;
     }
 
     public Long getId() {
@@ -56,14 +61,6 @@ public class User implements Serializable {
         this.username = username;
     }
 
-    public Long getCreateBy() {
-        return createBy;
-    }
-
-    public void setCreateBy(Long createBy) {
-        this.createBy = createBy;
-    }
-
     public String getPassword() {
         return password;
     }
@@ -78,6 +75,14 @@ public class User implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Integer getRole() {
+        return role;
+    }
+
+    public void setRole(Integer role) {
+        this.role = role;
     }
 
     public Integer getCollege() {
@@ -96,12 +101,36 @@ public class User implements Serializable {
         this.org = org;
     }
 
+    public String getGrade() {
+        return grade;
+    }
+
+    public void setGrade(String grade) {
+        this.grade = grade;
+    }
+
+    public String getStudentId() {
+        return studentId;
+    }
+
+    public void setStudentId(String studentId) {
+        this.studentId = studentId;
+    }
+
     public Date getCreateTime() {
         return createTime;
     }
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    public Long getCreateBy() {
+        return createBy;
+    }
+
+    public void setCreateBy(Long createBy) {
+        this.createBy = createBy;
     }
 
     public Long getUpdateBy() {
@@ -136,30 +165,24 @@ public class User implements Serializable {
         this.delFlag = delFlag;
     }
 
-    public Integer getRole() {
-        return role;
-    }
-
-    public void setRole(Integer role) {
-        this.role = role;
-    }
-
-    public User() {
-    }
-
-    public User(Long id, String username, Long createBy, String password, String name, Integer college, Integer org, Date createTime, Long updateBy, Date updateTime, Integer status, Integer delFlag, Integer role) {
-        this.id = id;
-        this.username = username;
-        this.createBy = createBy;
-        this.password = password;
-        this.name = name;
-        this.college = college;
-        this.org = org;
-        this.createTime = createTime;
-        this.updateBy = updateBy;
-        this.updateTime = updateTime;
-        this.status = status;
-        this.delFlag = delFlag;
-        this.role = role;
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", name='" + name + '\'' +
+                ", role=" + role +
+                ", college=" + college +
+                ", org=" + org +
+                ", grade='" + grade + '\'' +
+                ", studentId='" + studentId + '\'' +
+                ", createTime=" + createTime +
+                ", createBy=" + createBy +
+                ", updateBy=" + updateBy +
+                ", updateTime=" + updateTime +
+                ", status=" + status +
+                ", delFlag=" + delFlag +
+                '}';
     }
 }
