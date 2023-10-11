@@ -1,5 +1,7 @@
 package com.example.complaint_system.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -13,21 +15,19 @@ public class User implements Serializable {
     private String name;
     private Integer role;
     private Integer college;
-    private Integer org;
+    private String org;
     private String grade;
     private String studentId;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Shanghai")
     private Date createTime;
     private Long createBy;
     private Long updateBy;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Shanghai")
     private Date updateTime;
     private Integer status;
     private Integer delFlag;
 
-
-    public User() {
-    }
-
-    public User(Long id, String username, String password, String name, Integer role, Integer college, Integer org, String grade, String studentId, Date createTime, Long createBy, Long updateBy, Date updateTime, Integer status, Integer delFlag) {
+    public User(Long id, String username, String password, String name, Integer role, Integer college, String org, String grade, String studentId, Date createTime, Long createBy, Long updateBy, Date updateTime, Integer status, Integer delFlag, Date startTime, Date endTime) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -43,6 +43,9 @@ public class User implements Serializable {
         this.updateTime = updateTime;
         this.status = status;
         this.delFlag = delFlag;
+    }
+
+    public User() {
     }
 
     public Long getId() {
@@ -93,11 +96,11 @@ public class User implements Serializable {
         this.college = college;
     }
 
-    public Integer getOrg() {
+    public String getOrg() {
         return org;
     }
 
-    public void setOrg(Integer org) {
+    public void setOrg(String org) {
         this.org = org;
     }
 
@@ -174,7 +177,7 @@ public class User implements Serializable {
                 ", name='" + name + '\'' +
                 ", role=" + role +
                 ", college=" + college +
-                ", org=" + org +
+                ", org='" + org + '\'' +
                 ", grade='" + grade + '\'' +
                 ", studentId='" + studentId + '\'' +
                 ", createTime=" + createTime +

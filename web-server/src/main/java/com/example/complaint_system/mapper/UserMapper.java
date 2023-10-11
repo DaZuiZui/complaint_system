@@ -24,4 +24,20 @@ public interface UserMapper {
      * @return
      */
     public Long delelteById(Long id);
+
+    /**
+     * @author hln 2023-10-11
+     *     通过id查询数据
+     * @param id
+     * @return
+     */
+    public User selectById(Long id);
+
+    /**
+     * @author hln 2023-10-11
+     *      通过id修改数据
+     * @param user
+     * @return
+     */
+    public Long updataById(User user);
 }

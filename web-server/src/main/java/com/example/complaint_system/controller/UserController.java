@@ -2,6 +2,8 @@ package com.example.complaint_system.controller;
 
 import com.alibaba.fastjson2.JSONArray;
 import com.example.complaint_system.domain.bo.DeleteByIdBo;
+import com.example.complaint_system.domain.bo.SelectByIdBo;
+import com.example.complaint_system.domain.bo.UpdataByIdBo;
 import com.example.complaint_system.domain.bo.UserLoginBo;
 import com.example.complaint_system.domain.vo.ResponseVo;
 import com.example.complaint_system.serivce.UserSerivce;
@@ -49,6 +51,30 @@ public class UserController {
     @ApiOperation("删除用户通过id")
     public String deleteById(@RequestBody DeleteByIdBo deleteByIdBo){
         return JSONArray.toJSONString(userSerivce.deleteById(deleteByIdBo));
+    }
+
+    /**
+     * @author yuyu 2023-9-16
+     *    管理员查找用户通过id
+     * @param selectByIdBo
+     * @return String.class
+     */
+    @ApiOperation("管理员查找用户通过id")
+    @PostMapping("/selectById")
+    public String selectById(@RequestBody SelectByIdBo selectByIdBo){
+        return JSONArray.toJSONString(userSerivce.selectById(selectByIdBo));
+    }
+
+    /**
+     * @author hln 2023-10-11
+     *    修改用户通过id
+     * @param updataByIdBo
+     * @return String.class
+     */
+    @ApiOperation("修改用户通过id")
+    @PostMapping("/updata")
+    public String updataById(@RequestBody UpdataByIdBo updataByIdBo){
+        return JSONArray.toJSONString(userSerivce.updataById(updataByIdBo));
     }
 
 }
