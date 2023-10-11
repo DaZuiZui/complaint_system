@@ -4,6 +4,9 @@ import com.example.complaint_system.domain.User;
 import com.example.complaint_system.domain.bo.AdminLoginBo;
 import org.apache.ibatis.annotations.Mapper;
 
+/**
+ *  管理员持久层
+ */
 @Mapper
 public interface AdminMapper {
 

@@ -9,6 +9,11 @@ import com.example.complaint_system.utils.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
+/**
+ * 2023-10-11
+ * 管理员版块接口实现类
+ */
 @Service
 public class AdminServiceImpl implements AdminService {
 

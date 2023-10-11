@@ -3,6 +3,9 @@ package com.example.complaint_system.serivce;
 import com.example.complaint_system.domain.bo.AdminLoginBo;
 import com.example.complaint_system.domain.vo.ResponseVo;
 
+/**
+ * 管理员板块接口
+ */
 public interface AdminService {
 
     /**
