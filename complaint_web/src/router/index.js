@@ -11,6 +11,9 @@ import UserRegister from '@/components/main/UserRegister.vue'
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
+  base: '/h',
+  
   routes: [
     {
       path: '/',
