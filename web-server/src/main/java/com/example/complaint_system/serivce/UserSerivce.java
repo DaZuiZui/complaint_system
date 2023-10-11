@@ -4,6 +4,9 @@ import com.example.complaint_system.domain.bo.DeleteByIdBo;
 import com.example.complaint_system.domain.bo.UserLoginBo;
 import com.example.complaint_system.domain.vo.ResponseVo;
 
+/**
+ * 用户业务接口
+ */
 public interface UserSerivce {
     /**
      * @author hln 2023-10-11
