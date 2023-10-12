@@ -106,7 +106,7 @@ export default {
                 },
                 {
                     value: 4,
-                    text: '其他学院'
+                    text: '通识学院'
                 }
             ],
             input: "",

@@ -77,14 +77,11 @@
     </select>
 
     <!--
-        @author zhuxinyu
-        用户通过userReg进行注册
+    @author zhuxinyu
+    用户通过userReg进行注册
     -->
     <insert id="userReg">
-        insert into
-            user
-        values
-               (null,#{username});
+        insert into user(username,password,college,org,grade,student_id)values (#{username},#{password},#{college},#{org},#{grade},#{student_id});
     </insert>
 
     <!--
