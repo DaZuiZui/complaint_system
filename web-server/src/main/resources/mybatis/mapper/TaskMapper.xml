@@ -59,6 +59,33 @@
         @auther xhuxinyu 2023-10-12
         更新Task数据
     -->
-
+    <update id="updateByIdTask">
+        update task
+        <set>
+            <if test="context != null and context != '' ">
+                context = #{context},
+            </if>
+            <if test="createBy != null ">
+                create_by = #{createBy},
+            </if>
+            <if test="createTime != null ">
+                create_time = #{createTime},
+            </if>
+            <if test="updateBy != null">
+                update_by = #{updateBy},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime},
+            </if>
+            <if test="status != null">
+                status = #{status},
+            </if>
+            <if test="delFlag != null">
+                del_flag = #{delFlag}
+            </if>
+        </set>
+        where
+            id = #{id}
+    </update>
 </mapper>
     
