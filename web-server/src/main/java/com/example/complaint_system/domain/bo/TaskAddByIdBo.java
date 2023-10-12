@@ -9,9 +9,13 @@ import java.util.Date;
  *    @author zhuxinyu 2023-10-12
  *      投诉内容添加实例
  */
-public class TaskAddByIdBo extends Task implements Serializable {
+public class TaskAddByIdBo implements Serializable {
     private String token;
     private Task task;    //内容实体类
+
+    public TaskAddByIdBo(){
+
+    }
 
     public TaskAddByIdBo(String token, Task task) {
         this.token = token;

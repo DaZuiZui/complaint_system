@@ -9,6 +9,9 @@ public class TaskSelectByIdBo implements Serializable {
     private String token;
     private Long id;
 
+    public TaskSelectByIdBo(){
+
+    }
     public TaskSelectByIdBo(String token, Long id) {
         this.token = token;
         this.id = id;

@@ -46,7 +46,7 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public ResponseVo taskAdd(TaskAddByIdBo taskAddByIdBo){
 
-        Long  aLong = taskMapper.addTask(taskAddByIdBo.setTask());
+        Long  aLong = taskMapper.addTask(taskAddByIdBo.getTask());
 
         if (aLong.longValue() == 0) {
             return new ResponseVo("增加失败",  null, "0x500");
@@ -78,7 +78,7 @@ public class TaskServiceImpl implements TaskService {
      */
     @Override
     public ResponseVo taskUpdateById(TaskUpdateByIdBo taskUpdateByIdBo){
-        Task task = taskUpdateByIdBo.getContext();
+        Task task = taskUpdateByIdBo.getTask();
         Long numberOfOpertion = taskMapper.updateByIdTask(task);
 
         if (numberOfOpertion.longValue() == 0L) {

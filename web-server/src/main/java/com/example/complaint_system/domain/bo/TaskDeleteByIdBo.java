@@ -10,6 +10,9 @@ public class TaskDeleteByIdBo implements Serializable {
     private String token;
     private Long id;
 
+    public TaskDeleteByIdBo(){
+
+    }
     @Override
     public String toString() {
         return "TaskDeleteByIdBo{" +

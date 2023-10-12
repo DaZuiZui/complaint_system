@@ -10,14 +10,19 @@ import java.io.Serializable;
  */
 public class TaskUpdateByIdBo implements Serializable {
     private String token;
-    private Task context; //投诉内容
+    private Task Task; //投诉内容
 
     @Override
     public String toString() {
         return "TaskUpdateByIdBo{" +
                 "token='" + token + '\'' +
-                ", context='" + context + '\'' +
+                ", Task=" + Task +
                 '}';
+    }
+
+    public TaskUpdateByIdBo(String token, com.example.complaint_system.domain.Task task) {
+        this.token = token;
+        Task = task;
     }
 
     public String getToken() {
@@ -28,16 +33,11 @@ public class TaskUpdateByIdBo implements Serializable {
         this.token = token;
     }
 
-    public Task getContext() {
-        return context;
+    public com.example.complaint_system.domain.Task getTask() {
+        return Task;
     }
 
-    public void setContext(Task context) {
-        this.context = context;
-    }
-
-    public TaskUpdateByIdBo(String token, Task context) {
-        this.token = token;
-        this.context = context;
+    public void setTask(com.example.complaint_system.domain.Task task) {
+        Task = task;
     }
 }

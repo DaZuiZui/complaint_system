@@ -21,12 +21,12 @@ public interface TaskMapper {
     public Task selectByIdTask(Long id);
 
     /**
-     * @param taskAddByIdBo
-     * @return
      * @auther zhuxinyu 2023-10-12
-     * 增加新数据.
+     *     增加新数据
+     * @param task
+     * @return
      */
-    public Long addTask(TaskAddByIdBo taskAddByIdBo);
+    public Long addTask(Task task);
 
     /**
      * @param id
