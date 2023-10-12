@@ -21,17 +21,17 @@
                               <div class="form-group">
                                 <label for="exampleInputEmail1">Username</label>
                                 <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" v-model="userLoginBo.username">
-                                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                               </div>
                               <div class="form-group">
                                 <label for="exampleInputPassword1">Password</label>
-                                <input type="password" class="form-control" id="exampleInputPassword1" v-model="userLoginBo.password">
+                                <input type="password" class="form-control"   v-model="userLoginBo.password">
                               </div>
                               <div class="form-group form-check">
-                                    
+                                <button  class="btn btn-primary" style="width:100%" @click="submit()">Submit</button>
                               </div>
-                              <button  class="btn btn-primary" style="width:100%" @click="submit()"   :disabled="switchbutton">Submit</button>
-                         
+                              <div class="form-group form-check">
+                                <button  class="btn btn-primary" style="width:100%" @click="adminSubmit()">adminSubmit</button>
+                              </div>
                       </div>
                   </div>
               </div>
@@ -61,8 +61,6 @@ export default {
           username: "",
           password: "",
       },
-      //按钮开关
-      switchbutton: false,
     }
   },
   mounted(){
@@ -72,18 +70,26 @@ export default {
 methods: {
   //提交登入
   async submit(){
-       this.switchbutton = true;
-       var object = synRequestPost("/user/Login",this.userLoginBo);
+       var object =await synRequestPost("/user/Login",this.userLoginBo);
        if(object.code != "0x200"){
           alert(object.message);
-          this.switchbutton = false;
           return ;
        }
 
        setCookie ("token",object.data);
        alert(object.message);
-       this.$router.push("/TaskList");
-       this.switchbutton = false;
+      //  this.$router.push("/TaskList");
+   },
+   async adminSubmit(){
+       var object =await synRequestPost("/admin/login",this.userLoginBo);
+       if(object.code != "0x200"){
+          alert(object.message);
+          return ;
+       }
+
+       setCookie ("token",object.data);
+       alert(object.message);
+      //  this.$router.push("/TaskList");
    },
 }
 }
