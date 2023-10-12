@@ -9,13 +9,13 @@ import java.util.Date;
  */
 public class Task implements Serializable {
     private Long id;
-    private Context context;
-    private Date createTime;
-    private Long createBy;
-    private Long updateBy;
-    private Date updateTime;
-    private Integer status;
-    private Integer delFlag;
+    private Context context;    //投诉内容
+    private Date createTime;    //创建时间
+    private Long createBy;      //创建人
+    private Long updateBy;      //修改人
+    private Date updateTime;    //修改时间
+    private Integer status;     //0 正常投诉 2 匿名投诉
+    private Integer delFlag;    //0未删除 1正常
 
     public Task(Long id, Context context, Date createTime, Long createBy, Long updateBy, Date updateTime, Integer status, Integer delFlag) {
         this.id = id;

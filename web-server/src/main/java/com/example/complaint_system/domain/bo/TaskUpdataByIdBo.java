@@ -3,11 +3,12 @@ package com.example.complaint_system.domain.bo;
 import java.io.Serializable;
 
 /**
- * 通过id修改Task
+ *    @author zhuxinyu 2023-10-12
+ *      投诉内容更新实例
  */
 public class TaskUpdataByIdBo implements Serializable {
     private String token;
-    private String context;
+    private String context; //投诉内容
 
     @Override
     public String toString() {

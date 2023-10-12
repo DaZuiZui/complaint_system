@@ -3,7 +3,8 @@ package com.example.complaint_system.domain.bo;
 import java.io.Serializable;
 
 /**
- * 通过id删除TaskBo
+ *    @author zhuxinyu 2023-10-12
+ *      投诉内容删除实例
  */
 public class TaskDeleteByIdBo implements Serializable {
     private String token;
