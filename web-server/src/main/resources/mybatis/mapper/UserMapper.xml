@@ -81,7 +81,10 @@
     用户通过userReg进行注册
     -->
     <insert id="userReg">
-        insert into user(username,password,college,org,grade,student_id)values (#{username},#{password},#{college},#{org},#{grade},#{student_id});
+        insert into
+            user(username,password,name,role,college,org,grade,student_id,create_by,create_time,update_by,update_time,status,del_flag)
+        values
+            (#{username},#{password},#{name},#{role},#{college},#{org},#{grade},#{student_id},#{create_by},#{create_time},#{update_by},#{update_time,#{status},#{del_flag});
     </insert>
 
     <!--
