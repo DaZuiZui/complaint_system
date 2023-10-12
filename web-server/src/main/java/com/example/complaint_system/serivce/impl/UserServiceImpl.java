@@ -109,7 +109,7 @@ public class UserServiceImpl implements UserSerivce {
         if (byUsername != null){
             return new ResponseVo("该username已经存在",null,"0x202");
         }
-
+        byUsername.setCreateTime(new Date());
         Long aLong = userMapper.userReg(userRegBo);
         if (aLong.longValue() == 0L){
             return new ResponseVo("注册失败",null,"0x500");
