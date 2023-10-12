@@ -50,7 +50,7 @@ public class TaskImgServiceImpl implements TaskImgService {
     @Override
     public ResponseVo taskImgAdd(TaskImgAddByBo taskImgAddByBo) {
 
-        Long aLong = taskImgMapper.addTaskImg(taskImgAddByBo);
+        Long aLong = taskImgMapper.addTaskImg(taskImgAddByBo.getTaskImg());
         if (aLong.longValue() == 0){
             return new ResponseVo("增加失败",  null, "0x500");
         }
