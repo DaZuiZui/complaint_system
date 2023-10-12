@@ -17,8 +17,8 @@ public class TransactionUtils {
     private DataSourceTransactionManager transactionManager;
 
     /**
+     * @author bryan yang 2023-10-12
      * 开启事物
-     *
      * @param isolationLevel 隔离级别
      * @return
      */
@@ -35,10 +35,10 @@ public class TransactionUtils {
     }
 
     /**
-     *
+     * @author bryan yang 2023-10-12
      * 提交事物
-     *
      * @param transaction
+     * @return
      */
     public void commit(TransactionStatus transaction) {
         //提交事务
@@ -46,9 +46,10 @@ public class TransactionUtils {
     }
 
     /**
+     * @author bryan yang 2023-10-12
      * 回滚事物
-     *
      * @param transactionStatus
+     * @return
      */
     public void rollback(TransactionStatus transactionStatus) {
         transactionManager.rollback(transactionStatus);
