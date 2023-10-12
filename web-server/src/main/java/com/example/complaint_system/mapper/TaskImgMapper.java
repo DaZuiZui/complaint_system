@@ -22,10 +22,10 @@ public interface TaskImgMapper {
     /**
      * @auther Oh… Yeah!!! 2023-10-11
      *        增加新数据.
-     * @param taskImgAddByBo
+     * @param taskImg
      * @return
      */
-    public Long addTaskImg(TaskImgAddByBo taskImgAddByBo);
+    public Long addTaskImg(TaskImg taskImg);
 
     /**
      * @auther Oh… Yeah!!! 2023-10-11
