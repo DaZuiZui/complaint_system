@@ -1,7 +1,7 @@
 package com.example.complaint_system.serivce.impl;
 
 import com.example.complaint_system.domain.TaskImg;
-import com.example.complaint_system.domain.bo.TaskImgAddBo;
+import com.example.complaint_system.domain.bo.TaskImgAddByBo;
 import com.example.complaint_system.domain.bo.TaskImgDeleteByIdBo;
 import com.example.complaint_system.domain.bo.TaskImgSelectByIdBo;
 import com.example.complaint_system.domain.bo.TaskImgUpdateByIdBo;
@@ -19,10 +19,10 @@ public class TaskImgServiceImpl implements TaskImgService {
 
 
     /**
+     * @auther Oh… Yeah!!! 2023-10-11
+     *      根据id查询数据.
      * @param taskImgSelectByIdBo
      * @return ResponseVo
-     * @auther Oh… Yeah!!! 2023-10-11
-     * 根据id查询数据.
      */
     @Override
     public ResponseVo taskImgSelectById(TaskImgSelectByIdBo taskImgSelectByIdBo) {
@@ -38,15 +38,15 @@ public class TaskImgServiceImpl implements TaskImgService {
 
 
     /**
-     * @param taskImgAddBo
-     * @return ResponseVo
      * @auther Oh… Yeah!!! 2023-10-11
-     * 增加新数据.
+     *      增加新数据.
+     * @param taskImgAddByBo
+     * @return ResponseVo
      */
     @Override
-    public ResponseVo taskImgAdd(TaskImgAddBo taskImgAddBo) {
+    public ResponseVo taskImgAdd(TaskImgAddByBo taskImgAddByBo) {
 
-        String imgUrl = taskImgAddBo.getImgUrl();
+        String imgUrl = taskImgAddByBo.getImgUrl();
 
         if (imgUrl == null || imgUrl == "") {
 
@@ -58,7 +58,7 @@ public class TaskImgServiceImpl implements TaskImgService {
 
         if (taskImg == null) {
 
-            taskImgMapper.addTaskImg(taskImgAddBo);
+            taskImgMapper.addTaskImg(taskImgAddByBo);
 
             return new ResponseVo("增加成功", "存入数据库的数据是：" + taskImgMapper.selectByimgUrl(imgUrl), "0x500");
         }
@@ -68,10 +68,10 @@ public class TaskImgServiceImpl implements TaskImgService {
     }
 
     /**
-     * @param taskImgDeleteByIdBo
-     * @return ResponseVo
      * @auther Oh… Yeah!!! 2023-10-11
      * 通过id删除TaskImg数据.
+     * @param taskImgDeleteByIdBo
+     * @return ResponseVo
      */
     @Override
     public ResponseVo taskImgDeleteById(TaskImgDeleteByIdBo taskImgDeleteByIdBo) {

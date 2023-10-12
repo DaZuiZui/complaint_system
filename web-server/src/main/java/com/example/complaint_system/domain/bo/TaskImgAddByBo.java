@@ -1,28 +1,25 @@
 package com.example.complaint_system.domain.bo;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 import java.io.Serializable;
 import java.util.Date;
 
-public class TaskImgAddBo implements Serializable {
+public class TaskImgAddByBo implements Serializable {
 
     private String token;
     private String imgUrl;
     private Long partId;
- //   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-ddTHH:mm:ss.SSSZ", timezone = "Asia/Shanghai")
     private Date createTime;
     private Long createBy;
     private Long updateBy;
- //   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-ddTHH:mm:ss.SSSZ", timezone = "Asia/Shanghai")
     private Date updateTime;
     private Integer status;
     private Integer delFlag;
 
-    public TaskImgAddBo() {
+
+    public TaskImgAddByBo() {
     }
 
-    public TaskImgAddBo(String token, String imgUrl, Long partId, Date createTime, Long createBy, Long updateBy, Date updateTime, Integer status, Integer delFlag) {
+    public TaskImgAddByBo(String token, String imgUrl, Long partId, Date createTime, Long createBy, Long updateBy, Date updateTime, Integer status, Integer delFlag) {
         this.token = token;
         this.imgUrl = imgUrl;
         this.partId = partId;
@@ -33,6 +30,7 @@ public class TaskImgAddBo implements Serializable {
         this.status = status;
         this.delFlag = delFlag;
     }
+
 
     public String getToken() {
         return token;
@@ -108,7 +106,7 @@ public class TaskImgAddBo implements Serializable {
 
     @Override
     public String toString() {
-        return "TaskImgAddBo{" +
+        return "TaskImgAddByBo{" +
                 "token='" + token + '\'' +
                 ", imgUrl='" + imgUrl + '\'' +
                 ", partId=" + partId +

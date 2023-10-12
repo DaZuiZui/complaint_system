@@ -1,6 +1,6 @@
 package com.example.complaint_system.serivce;
 
-import com.example.complaint_system.domain.bo.TaskImgAddBo;
+import com.example.complaint_system.domain.bo.TaskImgAddByBo;
 import com.example.complaint_system.domain.bo.TaskImgDeleteByIdBo;
 import com.example.complaint_system.domain.bo.TaskImgSelectByIdBo;
 import com.example.complaint_system.domain.bo.TaskImgUpdateByIdBo;
@@ -20,10 +20,10 @@ public interface TaskImgService {
     /**
      * @auther Oh… Yeah!!! 2023-10-11
      *      增加新数据.
-     * @param taskImgAddBo
+     * @param taskImgAddByBo
      * @return ResponseVo
      */
-    public ResponseVo taskImgAdd(TaskImgAddBo taskImgAddBo);
+    public ResponseVo taskImgAdd(TaskImgAddByBo taskImgAddByBo);
 
 
     /**

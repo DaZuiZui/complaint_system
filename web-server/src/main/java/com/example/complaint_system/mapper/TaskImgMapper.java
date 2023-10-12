@@ -1,7 +1,7 @@
 package com.example.complaint_system.mapper;
 
 import com.example.complaint_system.domain.TaskImg;
-import com.example.complaint_system.domain.bo.TaskImgAddBo;
+import com.example.complaint_system.domain.bo.TaskImgAddByBo;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
@@ -27,10 +27,10 @@ public interface TaskImgMapper {
     /**
      * @auther Oh… Yeah!!! 2023-10-11
      *        增加新数据.
-     * @param taskImgAddBo
+     * @param taskImgAddByBo
      * @return
      */
-    public void addTaskImg(TaskImgAddBo taskImgAddBo);
+    public void addTaskImg(TaskImgAddByBo taskImgAddByBo);
 
     /**
      * @auther Oh… Yeah!!! 2023-10-11

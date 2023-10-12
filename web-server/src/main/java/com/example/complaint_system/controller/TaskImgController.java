@@ -1,7 +1,7 @@
 package com.example.complaint_system.controller;
 
 import com.alibaba.fastjson2.JSONArray;
-import com.example.complaint_system.domain.bo.TaskImgAddBo;
+import com.example.complaint_system.domain.bo.TaskImgAddByBo;
 import com.example.complaint_system.domain.bo.TaskImgDeleteByIdBo;
 import com.example.complaint_system.domain.bo.TaskImgSelectByIdBo;
 import com.example.complaint_system.domain.bo.TaskImgUpdateByIdBo;
@@ -37,13 +37,13 @@ public class TaskImgController {
     /**
      * @auther Oh… Yeah!!! 2023-10-11
      *      增加新数据.
-     * @param taskImgAddBo
+     * @param taskImgAddByBo
      * @return String.class
      */
     @PostMapping("/add")
     @ApiOperation("增加TaskImg数据")
-    public String taskImgAdd(@RequestBody TaskImgAddBo taskImgAddBo){
-        return JSONArray.toJSONString(taskImgService.taskImgAdd(taskImgAddBo));
+    public String taskImgAdd(@RequestBody TaskImgAddByBo taskImgAddByBo){
+        return JSONArray.toJSONString(taskImgService.taskImgAdd(taskImgAddByBo));
     }
 
     /**
@@ -76,3 +76,5 @@ public class TaskImgController {
 
 
 }
+
+
