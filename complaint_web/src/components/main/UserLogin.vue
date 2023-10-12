@@ -70,6 +70,10 @@ export default {
 methods: {
   //提交登入
   async submit(){
+    if(this.userLoginBo.username.length<3 ||this.userLoginBo.username.length>30 || this.userLoginBo.username.valueOf==null ||this.userLoginBo.username=="" ){
+        alert("输入格式有误");
+        return;
+    }
        var object =await synRequestPost("/user/Login",this.userLoginBo);
        if(object.code != "0x200"){
           alert(object.message);
