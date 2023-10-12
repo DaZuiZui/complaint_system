@@ -76,4 +76,23 @@
         limit 1
     </select>
 
+    <!--
+    @author zhuxinyu
+    用户通过userReg进行注册
+    -->
+    <insert id="userReg">
+        insert into user(username,password,college,org,grade,student_id)values (#{username},#{password},#{college},#{org},#{grade},#{student_id});
+    </insert>
+
+    <!--
+        @author zhuxinyu
+        根据username进行查询
+    -->
+    <select id="findByUsername" resultType="com.example.complaint_system.domain.User">
+        select * from user
+        where username = #{username}
+            limit 1
+    </select>
+
+
 </mapper>

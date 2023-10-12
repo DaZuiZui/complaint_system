@@ -1,10 +1,7 @@
 package com.example.complaint_system.serivce.impl;
 
 import com.example.complaint_system.domain.User;
-import com.example.complaint_system.domain.bo.DeleteByIdBo;
-import com.example.complaint_system.domain.bo.SelectByIdBo;
-import com.example.complaint_system.domain.bo.UpdataByIdBo;
-import com.example.complaint_system.domain.bo.UserLoginBo;
+import com.example.complaint_system.domain.bo.*;
 import com.example.complaint_system.domain.vo.ResponseVo;
 import com.example.complaint_system.mapper.UserMapper;
 import com.example.complaint_system.serivce.UserSerivce;
@@ -90,5 +87,28 @@ public class UserServiceImpl implements UserSerivce {
         return new ResponseVo("修改成功", null, "0x200");
     }
 
+
+    /**
+     * @author zhuxinyu 2023-10-11
+     * 用户注册
+     *      用户注册，首先查看用户username是否存在如果存在则注册失败，如果当前username在数据库中不存在则注册成功。
+     * @param userRegBo
+     * @return String.class
+     */
+    @Override
+    public ResponseVo userReg(UserRegBo userRegBo) {
+        User byUsername = userMapper.findByUsername(userRegBo.getUsername());
+
+        if (byUsername != null){
+            return new ResponseVo("该username已经存在",null,"0x202");
+        }
+
+        Long aLong = userMapper.userReg(userRegBo);
+        if (aLong.longValue() == 0L){
+            return new ResponseVo("注册失败",null,"0x500");
+        }
+
+        return new ResponseVo("注册成功",null,"0x200");
+    }
 
 }
