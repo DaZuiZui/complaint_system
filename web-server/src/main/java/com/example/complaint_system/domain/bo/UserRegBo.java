@@ -10,6 +10,7 @@ public class UserRegBo implements Serializable {
     private String token;
     private String username;
     private String password;
+    private String name;
     private Integer college;
     private String org;
     private String grade;
@@ -22,6 +23,7 @@ public class UserRegBo implements Serializable {
                 "token='" + token + '\'' +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
+                ", name='" + name + '\'' +
                 ", college=" + college +
                 ", org='" + org + '\'' +
                 ", grade='" + grade + '\'' +
@@ -52,6 +54,14 @@ public class UserRegBo implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Integer getCollege() {
@@ -94,10 +104,11 @@ public class UserRegBo implements Serializable {
         this.status = status;
     }
 
-    public UserRegBo(String token, String username, String password, Integer college, String org, String grade, String student_id, Integer status) {
+    public UserRegBo(String token, String username, String password, String name, Integer college, String org, String grade, String student_id, Integer status) {
         this.token = token;
         this.username = username;
         this.password = password;
+        this.name = name;
         this.college = college;
         this.org = org;
         this.grade = grade;

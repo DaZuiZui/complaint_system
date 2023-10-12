@@ -1,5 +1,6 @@
 package com.example.complaint_system.domain;
 
+import javax.naming.Context;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -7,8 +8,8 @@ import java.util.Date;
  *
  */
 public class Task implements Serializable {
-    private String token;       //
-    private String context;
+    private Long id;
+    private Context context;
     private Date createTime;
     private Long createBy;
     private Long updateBy;
@@ -16,33 +17,30 @@ public class Task implements Serializable {
     private Integer status;
     private Integer delFlag;
 
-    @Override
-    public String toString() {
-        return "Task{" +
-                "token='" + token + '\'' +
-                ", context='" + context + '\'' +
-                ", createTime=" + createTime +
-                ", createBy=" + createBy +
-                ", updateBy=" + updateBy +
-                ", updateTime=" + updateTime +
-                ", status=" + status +
-                ", delFlag=" + delFlag +
-                '}';
+    public Task(Long id, Context context, Date createTime, Long createBy, Long updateBy, Date updateTime, Integer status, Integer delFlag) {
+        this.id = id;
+        this.context = context;
+        this.createTime = createTime;
+        this.createBy = createBy;
+        this.updateBy = updateBy;
+        this.updateTime = updateTime;
+        this.status = status;
+        this.delFlag = delFlag;
     }
 
-    public String getToken() {
-        return token;
+    public Long getId() {
+        return id;
     }
 
-    public void setToken(String token) {
-        this.token = token;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getContext() {
+    public Context getContext() {
         return context;
     }
 
-    public void setContext(String context) {
+    public void setContext(Context context) {
         this.context = context;
     }
 
@@ -94,14 +92,17 @@ public class Task implements Serializable {
         this.delFlag = delFlag;
     }
 
-    public Task(String token, String context, Date createTime, Long createBy, Long updateBy, Date updateTime, Integer status, Integer delFlag) {
-        this.token = token;
-        this.context = context;
-        this.createTime = createTime;
-        this.createBy = createBy;
-        this.updateBy = updateBy;
-        this.updateTime = updateTime;
-        this.status = status;
-        this.delFlag = delFlag;
+    @Override
+    public String toString() {
+        return "Task{" +
+                "id=" + id +
+                ", context=" + context +
+                ", createTime=" + createTime +
+                ", createBy=" + createBy +
+                ", updateBy=" + updateBy +
+                ", updateTime=" + updateTime +
+                ", status=" + status +
+                ", delFlag=" + delFlag +
+                '}';
     }
 }
