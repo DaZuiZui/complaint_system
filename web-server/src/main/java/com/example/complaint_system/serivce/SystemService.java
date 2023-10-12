@@ -17,20 +17,25 @@ import java.io.IOException;
 @Service
 public interface SystemService {
     /**
+     * @author bryan yang 2023 10-12
      * 幂等性处理
-     * @return
+     * @return String.class
      */
     public String getNonPower();
 
     /**
+     * @author bryan yang 2023 10-12
      * 文件下载
+     * @return byte[]
      */
     @ApiOperation("文件下载")
     @GetMapping(value ="/getimage",produces = MediaType.IMAGE_JPEG_VALUE)
     public byte[] getPhoto(@RequestParam("imgUrl") String imgUrl) throws IOException;
 
     /**
+     * @author bryan yang 2023 10-12
      * 上传图片
+     * @return String.class
      */
     public String imgUpDown(@RequestParam("file") MultipartFile file, @RequestParam("token")String token) throws IOException;
 }

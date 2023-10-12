@@ -4,6 +4,9 @@ import com.example.complaint_system.domain.TaskImg;
 
 import java.io.Serializable;
 
+/**
+ * task修改通过id
+ */
 public class TaskImgUpdateByIdBo implements Serializable {
 
     private String token;

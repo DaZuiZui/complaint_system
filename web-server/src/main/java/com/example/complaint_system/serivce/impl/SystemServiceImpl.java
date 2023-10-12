@@ -30,6 +30,7 @@ public class SystemServiceImpl implements SystemService {
     private String projecturl;
 
     /**
+     * @author bryan yang 2023 10-12
      * 文件下载
      */
     @ApiOperation("文件下载")
@@ -48,6 +49,7 @@ public class SystemServiceImpl implements SystemService {
     }
 
     /**
+     * @author bryan yang 2023 10-12
      * 非幂等性处理
      * @return
      */
@@ -57,6 +59,7 @@ public class SystemServiceImpl implements SystemService {
     }
 
     /**
+     * @author bryan yang 2023 10-12
      * 上传图片
      */
     @Override
@@ -82,6 +85,4 @@ public class SystemServiceImpl implements SystemService {
         System.err.println("??");
         return JSONArray.toJSONString(new ResponseVo<>("success",projecturl+"/system/getimage?imgUrl="+id+"/"+fileName,"0x200"));
     }
-
-
 }

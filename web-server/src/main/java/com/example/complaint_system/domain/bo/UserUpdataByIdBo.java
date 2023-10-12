@@ -4,16 +4,19 @@ import com.example.complaint_system.domain.User;
 
 import java.io.Serializable;
 
-public class UpdataByIdBo implements Serializable {
+/**
+ * 通过id修改用户
+ */
+public class UserUpdataByIdBo implements Serializable {
     private String token;
     private User user;
 
-    public UpdataByIdBo(String token, User user) {
+    public UserUpdataByIdBo(String token, User user) {
         this.token = token;
         this.user = user;
     }
 
-    public UpdataByIdBo() {
+    public UserUpdataByIdBo() {
     }
 
     public String getToken() {
@@ -34,7 +37,7 @@ public class UpdataByIdBo implements Serializable {
 
     @Override
     public String toString() {
-        return "UpdataByIdBo{" +
+        return "UserUpdataByIdBo{" +
                 "token='" + token + '\'' +
                 ", user=" + user +
                 '}';

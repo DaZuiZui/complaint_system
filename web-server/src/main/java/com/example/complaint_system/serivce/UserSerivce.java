@@ -38,7 +38,7 @@ public interface UserSerivce {
      * @param updataByIdBo
      * @return ResponseVo.class
      */
-    public ResponseVo updataById(UpdataByIdBo updataByIdBo);
+    public ResponseVo updataById(UserUpdataByIdBo updataByIdBo);
 
     /**
      * @author zhuxinyu 2023-10-11

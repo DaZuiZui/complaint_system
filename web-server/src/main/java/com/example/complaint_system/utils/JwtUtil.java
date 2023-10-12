@@ -20,7 +20,7 @@ public class JwtUtil {
 
     /**
      * @author Bryan yang 2023-10-10
-     * 生成密钥
+     *      生成密钥
      * @param user User.class
      * @return String.class
      */

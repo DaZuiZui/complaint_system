@@ -13,6 +13,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 
+/**
+ * 2023-10-12
+ * 系统面板控制器
+ */
 @CrossOrigin
 @RestController
 @RequestMapping("/system")

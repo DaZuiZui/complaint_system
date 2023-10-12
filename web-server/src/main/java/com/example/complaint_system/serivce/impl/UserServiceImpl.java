@@ -76,7 +76,7 @@ public class UserServiceImpl implements UserSerivce {
      * @return String.class
      */
     @Override
-    public ResponseVo updataById(UpdataByIdBo updataByIdBo) {
+    public ResponseVo updataById(UserUpdataByIdBo updataByIdBo) {
         updataByIdBo.getUser().setUpdateBy(1l);
         updataByIdBo.getUser().setUpdateTime(new Date());
         Long numbersOfOpertion = userMapper.updataById(updataByIdBo.getUser());

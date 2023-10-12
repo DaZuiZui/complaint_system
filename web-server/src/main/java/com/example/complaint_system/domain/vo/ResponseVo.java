@@ -3,6 +3,7 @@ package com.example.complaint_system.domain.vo;
 import java.io.Serializable;
 
 /**
+ * 2023-10-12
  * 后端返回给前端的数据封装题
  */
 public class ResponseVo<T> {

@@ -12,7 +12,7 @@ import org.apache.ibatis.annotations.Mapper;
 public interface UserMapper {
     /**
      * @author hln 2023-10-11
-     * 通过username获得用户实体
+     *      通过username获得用户实体
      * @param userLoginBo
      * @return
      */
@@ -20,7 +20,7 @@ public interface UserMapper {
 
     /**
      * @author hln 2023-10-11
-     * 删除用户
+     *      删除用户
      * @param id
      * @return
      */

@@ -6,6 +6,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
+ * 2023-10-12
  * 投诉照片实体类
  */
 public class TaskImg implements Serializable {

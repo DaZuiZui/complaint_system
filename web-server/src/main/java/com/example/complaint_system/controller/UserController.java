@@ -70,7 +70,7 @@ public class UserController {
      */
     @ApiOperation("修改用户通过id")
     @PostMapping("/updata")
-    public String updataById(@RequestBody UpdataByIdBo updataByIdBo){
+    public String updataById(@RequestBody UserUpdataByIdBo updataByIdBo){
         return JSONArray.toJSONString(userSerivce.updataById(updataByIdBo));
     }
 
