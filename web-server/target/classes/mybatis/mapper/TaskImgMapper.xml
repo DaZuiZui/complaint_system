@@ -46,6 +46,48 @@
              #{status},#{delFlag});
     </insert>
 
+    <!--
+            @auther Oh… Yeah!!! 2023-10-12
+               删除TaskImg数据
+    -->
+    <delete id="deleteByIdTaskImg">
+        delete from task_img where id = #{id}
+    </delete>
 
+    <!--
+           @auther Oh… Yeah!!! 2023-10-12
+              更新TaskImg数据
+   -->
+    <update id="updateByIdTaskImg">
+        update task_img
+        <set>
+            <if test="imgUrl != null and imgUrl != '' ">
+                img_url = #{imgUrl},
+            </if>
+            <if test="partId != null">
+                part_id = #{partId},
+            </if>
+            <if test="createBy != null ">
+                create_by = #{createBy},
+            </if>
+            <if test="createTime != null ">
+                create_time = #{createTime},
+            </if>
+            <if test="updateBy != null">
+                update_by = #{updateBy},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime},
+            </if>
+            <if test="status != null">
+                status = #{status},
+            </if>
+            <if test="delFlag != null">
+                del_flag = #{delFlag}
+            </if>
+        </set>
+        where
+        id = #{id}
+    </update>
 
 </mapper>

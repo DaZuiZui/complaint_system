@@ -31,4 +31,20 @@ public interface TaskImgMapper {
      * @return
      */
     public void addTaskImg(TaskImgAddBo taskImgAddBo);
+
+    /**
+     * @auther Oh… Yeah!!! 2023-10-11
+     *      通过id删除TaskImg数据.
+     * @param id
+     * @return Long
+     */
+    public Long deleteByIdTaskImg(Long id);
+
+    /**
+     * @author Oh… Yeah, 2023-9-12
+     *      通过id更新TaskImg数据.
+     * @param taskImg
+     * @return Long
+     */
+    public Long updateByIdTaskImg(TaskImg taskImg);
 }
