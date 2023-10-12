@@ -28,6 +28,9 @@ public class Task implements Serializable {
         this.delFlag = delFlag;
     }
 
+    public Task() {
+    }
+
     public Long getId() {
         return id;
     }

@@ -9,7 +9,7 @@ import java.util.Date;
  *    @author zhuxinyu 2023-10-12
  *      投诉内容添加实例
  */
-public class TaskAddByIdBo implements Serializable {
+public class TaskAddByIdBo extends Task implements Serializable {
     private String token;
     private Task task;    //内容实体类
 
@@ -40,5 +40,9 @@ public class TaskAddByIdBo implements Serializable {
                 "token='" + token + '\'' +
                 ", task=" + task +
                 '}';
+    }
+
+    public TaskAddByIdBo setTask() {
+        return null;
     }
 }

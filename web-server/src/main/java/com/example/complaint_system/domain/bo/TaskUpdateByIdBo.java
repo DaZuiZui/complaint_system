@@ -1,18 +1,20 @@
 package com.example.complaint_system.domain.bo;
 
+import com.example.complaint_system.domain.Task;
+
 import java.io.Serializable;
 
 /**
  *    @author zhuxinyu 2023-10-12
  *      投诉内容更新实例
  */
-public class TaskUpdataByIdBo implements Serializable {
+public class TaskUpdateByIdBo implements Serializable {
     private String token;
-    private String context; //投诉内容
+    private Task context; //投诉内容
 
     @Override
     public String toString() {
-        return "TaskUpdataByIdBo{" +
+        return "TaskUpdateByIdBo{" +
                 "token='" + token + '\'' +
                 ", context='" + context + '\'' +
                 '}';
@@ -26,15 +28,15 @@ public class TaskUpdataByIdBo implements Serializable {
         this.token = token;
     }
 
-    public String getContext() {
+    public Task getContext() {
         return context;
     }
 
-    public void setContext(String context) {
+    public void setContext(Task context) {
         this.context = context;
     }
 
-    public TaskUpdataByIdBo(String token, String context) {
+    public TaskUpdateByIdBo(String token, Task context) {
         this.token = token;
         this.context = context;
     }

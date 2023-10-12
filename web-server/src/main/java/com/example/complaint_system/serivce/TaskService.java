@@ -3,7 +3,7 @@ package com.example.complaint_system.serivce;
 import com.example.complaint_system.domain.bo.TaskAddByIdBo;
 import com.example.complaint_system.domain.bo.TaskDeleteByIdBo;
 import com.example.complaint_system.domain.bo.TaskSelectByIdBo;
-import com.example.complaint_system.domain.bo.TaskUpdataByIdBo;
+import com.example.complaint_system.domain.bo.TaskUpdateByIdBo;
 import com.example.complaint_system.domain.vo.ResponseVo;
 
 /**
@@ -37,8 +37,8 @@ public interface TaskService {
     /**
      * @author zhuxinyu 2023-10-12
      *      通过id更新Task数据.
-     * @param taskUpdataByIdBo
+     * @param taskUpdateByIdBo
      * @return
      */
-    public ResponseVo taskUpdateById(TaskUpdataByIdBo taskUpdataByIdBo);
+    public ResponseVo taskUpdateById(TaskUpdateByIdBo taskUpdateByIdBo);
 }

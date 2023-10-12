@@ -4,39 +4,37 @@ import com.example.complaint_system.domain.Task;
 import com.example.complaint_system.domain.bo.TaskAddByIdBo;
 import org.apache.ibatis.annotations.Mapper;
 
+/**
+ * @author zhuxinyu 2023-10-12
+ *  投诉内容持久层
+ */
 @Mapper
 public interface TaskMapper {
-    /**
-     * @auther zhuxinyu 2023-10-12
-     *      根据id查询数据.
-     * @param id
-     * @return
-     */
-    public Task selectById(Long id);
+
 
     /**
      * @auther zhuxinyu 2023-10-12
      *      根据context查询数据.
-     * @param context
-     * @return
-     */
-    public Task selectByContext(String context);
-
-    /**
-     * @auther zhuxinyu 2023-10-12
-     *      增加新数据.
-     * @param taskAddByIdBo
-     * @return
-     */
-    public Task addTask(TaskAddByIdBo taskAddByIdBo);
-
-    /**
-     * @auther zhuxinyu 2023-10-12
-     *      通过id删除Task数据.
      * @param id
      * @return
      */
-    public Task deleteByIdTask(Long id);
+    public Task selectByIdTask(Long id);
+
+    /**
+     * @param taskAddByIdBo
+     * @return
+     * @auther zhuxinyu 2023-10-12
+     * 增加新数据.
+     */
+    public Long addTask(TaskAddByIdBo taskAddByIdBo);
+
+    /**
+     * @param id
+     * @return
+     * @auther zhuxinyu 2023-10-12
+     * 通过id删除Task数据.
+     */
+    public Long deleteByIdTask(Long id);
 
     /**
      * @auther zhuxinyu 2023-10-12
