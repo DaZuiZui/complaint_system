@@ -80,7 +80,7 @@ public class UserController {
      *用户注册
      *    用户注册，首先查看用户username是否存在如果存在则注册失败，如果当前username在数据库中不存在则注册成功。
      * @param user
-     * @return
+     * @return String.class
      */
     @PostMapping("/userReg")
     @ApiOperation("用户注册")

@@ -100,7 +100,7 @@ public class UserServiceImpl implements UserSerivce {
      * 用户注册
      *      用户注册，首先查看用户username是否存在如果存在则注册失败，如果当前username在数据库中不存在则注册成功。
      * @param user
-     * @return String.class
+     * @return ResponseVo.class
      */
     @Override
     public ResponseVo userReg(User user) {

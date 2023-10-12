@@ -52,8 +52,8 @@ public interface UserMapper {
     /**
      * @author zhuxinyu 2023-10-12
      *      将userRegBo实体写入mysql
-     * @param
-     * @return
+     * @param user
+     * @return Long
      */
     public Long userReg(User user);
 }
