@@ -89,7 +89,6 @@ export default {
                 college: '',
                 grade: '',
                 studentId: '',
-
             },
             //学院
             college: [
