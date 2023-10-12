@@ -17,7 +17,7 @@ public interface TaskImgMapper {
      * @param id
      * @return TaskImg
      */
-    public TaskImg selectById(Long id);
+    public TaskImg selectByIdTaskImg(Long id);
 
     /**
      * @auther Oh… Yeah!!! 2023-10-11
