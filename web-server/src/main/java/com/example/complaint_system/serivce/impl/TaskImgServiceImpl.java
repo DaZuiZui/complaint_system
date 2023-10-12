@@ -44,16 +44,24 @@ public class TaskImgServiceImpl implements TaskImgService {
     @Override
     public ResponseVo taskImgAdd(TaskImgAddBo taskImgAddBo) {
 
-        TaskImg taskImg = taskImgMapper.selectByimgUrl(taskImgAddBo.getImgUrl());
+        String imgUrl = taskImgAddBo.getImgUrl();
+
+        if (imgUrl == null || imgUrl  == ""){
+
+            return new ResponseVo("增加失败,ImgUrl不能为null或者空串，必须要正确填写才能增加图片数据", null, "0x200");
+
+        }
+
+        TaskImg taskImg = taskImgMapper.selectByimgUrl(imgUrl);
 
         if (taskImg == null) {
 
             taskImgMapper.addTaskImg(taskImgAddBo);
 
-            return new ResponseVo("增加成功", taskImgMapper.selectByimgUrl(taskImgAddBo.getImgUrl()), "0x500");
+            return new ResponseVo("增加成功", "存入数据库的数据是："+taskImgMapper.selectByimgUrl(imgUrl), "0x500");
         }
 
-        return new ResponseVo("增加失败", null, "0x200");
+        return new ResponseVo("增加失败，要增加的图片数据已经存在", null, "0x200");
 
     }
 
