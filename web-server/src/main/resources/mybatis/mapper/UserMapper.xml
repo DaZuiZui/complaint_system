@@ -103,5 +103,8 @@
         limit 1
     </select>
 
-
+    <!-- 查询所有用户信息 -->
+    <select id="userFindAll" resultType="com.example.complaint_system.domain.User">
+        select * from user
+    </select>
 </mapper>

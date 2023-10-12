@@ -48,6 +48,13 @@ public interface UserSerivce {
      * @param user
      * @return ResponseVo.class
      */
-
     public ResponseVo userReg(User user);
+
+    /**
+     * @author hln 2023-10-12
+     *      查询所有用户功能
+     * @param
+     * @return
+     */
+    public ResponseVo userFindAll();
 }

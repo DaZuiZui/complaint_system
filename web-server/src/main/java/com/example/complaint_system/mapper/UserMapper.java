@@ -4,6 +4,8 @@ import com.example.complaint_system.domain.User;
 import com.example.complaint_system.domain.bo.UserLoginBo;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 /**
  * 用户持久层
  */
@@ -56,4 +58,12 @@ public interface UserMapper {
      * @return Long
      */
     public Long userReg(User user);
+
+    /**
+     * @author zhuxinyu 2023-10-12
+     *      查询所有用户信息
+     * @param
+     * @return
+     */
+    public List<User> userFindAll();
 }

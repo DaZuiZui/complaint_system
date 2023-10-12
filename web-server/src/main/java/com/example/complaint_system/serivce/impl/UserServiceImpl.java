@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * 用户业务接口实现
@@ -118,6 +119,18 @@ public class UserServiceImpl implements UserSerivce {
         }
 
         return new ResponseVo("注册成功",null,"0x200");
+    }
+
+    /**
+     * @author hln 2023-10-12
+     *      查询所有用户功能
+     * @param
+     * @return
+     */
+    @Override
+    public ResponseVo userFindAll() {
+        List<User> list = userMapper.userFindAll();
+        return new ResponseVo("查询成功",list,"0x200");
     }
 
 }

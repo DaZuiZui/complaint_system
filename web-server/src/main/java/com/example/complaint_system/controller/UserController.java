@@ -91,4 +91,17 @@ public class UserController {
 
         return JSONArray.toJSONString(userSerivce.userReg(user));
     }
+
+    /**
+     * @author hln 2023-10-12
+     *      查询所有用户信息
+     * @param
+     * @return
+     */
+    @PostMapping("/findAll")
+    @ApiOperation("查询所有用户信息")
+    public String userFindAll(){
+        return JSONArray.toJSONString(userSerivce.userFindAll());
+    }
+
 }
