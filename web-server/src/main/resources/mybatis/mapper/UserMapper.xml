@@ -84,7 +84,7 @@
         insert into
             user(username,password,name,role,college,org,grade,student_id,create_by,create_time,update_by,update_time,status,del_flag)
         values
-            (#{username},#{password},#{name},#{role},#{college},#{org},#{grade},#{student_id},#{create_by},#{create_time},#{update_by},#{update_time,#{status},#{del_flag});
+            (#{username},#{password},#{name},0,#{college},#{org},#{grade},#{student_id},#{create_by},#{create_time},#{update_by},#{update_time},0,0);
     </insert>
 
     <!--
