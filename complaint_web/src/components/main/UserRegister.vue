@@ -34,6 +34,10 @@
                             </div>
 
                             <div class="form-group">
+                                <label for="exampleInputEmail1">Enter Username</label>
+                                <input type="text" class="form-control" v-model="user.name">
+                            </div>
+                            <div class="form-group">
                                 <label for="exampleInputPassword1">Enter College</label>
                                 <br>
                                 <el-select v-model="input" placeholder="请选择">
@@ -54,8 +58,7 @@
                                 <label for="exampleInputPassword1">Enter StudentId</label>
                                 <input type="text" class="form-control" v-model="user.studentId">
                             </div>
-                            <button class="btn btn-primary" style="width:100%" @click="submit()"
-                                :disabled="switchbutton">Submit</button>
+                            <button class="btn btn-primary" style="width:100%" @click="submit()">Submit</button>
 
                         </div>
                     </div>
@@ -86,6 +89,7 @@ export default {
                 username: "",
                 password: "",
                 againPassword: "",
+                name: '',
                 college: '',
                 grade: '',
                 studentId: '',
@@ -110,8 +114,6 @@ export default {
                 }
             ],
             input: "",
-            //按钮开关
-            switchbutton: false,
         }
     },
     mounted() {
@@ -121,12 +123,55 @@ export default {
     methods: {
         //提交登入
         async submit() {
-            this.switchbutton = true;
+            if (this.user.username == "") {
+                alert("用户名不能为空!")
+                return
+            }
+            if (this.user.username.length < 3) {
+                alert("用户名长度小于3,请重新输入!")
+                this.user.username = ""
+                return
+            }
+            if (this.user.username.length > 30) {
+                alert("用户名长度大于30,请重新输入!")
+                this.user.username = ""
+                return
+            }
 
+            if (this.user.password == "") {
+                alert("密码不能为空!")
+                return
+            }
             //密码的重复输入正确判断
             if (this.user.password !== this.user.againPassword) {
                 alert('密码设置失败');
                 return;
+            }
+            if (this.user.name == "") {
+                alert("真实姓名不能为空!")
+                return
+            }
+            if (this.user.name.length < 1) {
+                alert("真实姓名长度小于3,请重新输入!")
+                this.user.name = ""
+                return
+            }
+            if (this.user.username.length > 4) {
+                alert("真实姓名长度大于4,请重新输入!")
+                this.user.name = ""
+                return
+            }
+            if (this.user.college == "") {
+                alert("学院不能为空!")
+                return
+            }
+            if (this.user.grade == "") {
+                alert("年纪不能为空!")
+                return
+            }
+            if (this.user.studentId == "") {
+                alert("学号不能为空!")
+                return
             }
             this.user.college = this.input
             let obj = await synRequestPost("/user/userReg", this.user);
@@ -135,10 +180,8 @@ export default {
                 this.$router.push("/userLogin");
             }
 
-
-            this.switchbutton = false;
         },
-        
+
     }
 }
 </script>
