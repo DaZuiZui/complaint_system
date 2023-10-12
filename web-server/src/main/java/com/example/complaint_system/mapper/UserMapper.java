@@ -2,7 +2,6 @@ package com.example.complaint_system.mapper;
 
 import com.example.complaint_system.domain.User;
 import com.example.complaint_system.domain.bo.UserLoginBo;
-import com.example.complaint_system.domain.bo.UserRegBo;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -53,8 +52,8 @@ public interface UserMapper {
     /**
      * @author zhuxinyu 2023-10-12
      *      将userRegBo实体写入mysql
-     * @param userRegBo
+     * @param
      * @return
      */
-    public Long userReg(UserRegBo userRegBo);
+    public Long userReg(User user);
 }

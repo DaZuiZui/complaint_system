@@ -18,17 +18,15 @@ public class User implements Serializable {
     private Integer college;
     private String org;
     private String grade;
-    private String studentId;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Shanghai")
+    private Long studentId;
     private Date createTime;
     private Long createBy;
     private Long updateBy;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Shanghai")
     private Date updateTime;
     private Integer status;
     private Integer delFlag;
 
-    public User(Long id, String username, String password, String name, Integer role, Integer college, String org, String grade, String studentId, Date createTime, Long createBy, Long updateBy, Date updateTime, Integer status, Integer delFlag, Date startTime, Date endTime) {
+    public User(Long id, String username, String password, String name, Integer role, Integer college, String org, String grade, Long studentId, Date createTime, Long createBy, Long updateBy, Date updateTime, Integer status, Integer delFlag, Date startTime, Date endTime) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -113,11 +111,11 @@ public class User implements Serializable {
         this.grade = grade;
     }
 
-    public String getStudentId() {
+    public Long getStudentId() {
         return studentId;
     }
 
-    public void setStudentId(String studentId) {
+    public void setStudentId(Long studentId) {
         this.studentId = studentId;
     }
 

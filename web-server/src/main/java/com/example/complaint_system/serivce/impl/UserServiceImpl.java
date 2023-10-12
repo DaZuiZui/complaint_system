@@ -99,18 +99,20 @@ public class UserServiceImpl implements UserSerivce {
      * @author zhuxinyu 2023-10-11
      * 用户注册
      *      用户注册，首先查看用户username是否存在如果存在则注册失败，如果当前username在数据库中不存在则注册成功。
-     * @param userRegBo
+     * @param user
      * @return String.class
      */
     @Override
-    public ResponseVo userReg(UserRegBo userRegBo) {
-        User byUsername = userMapper.findByUsername(userRegBo.getUsername());
+    public ResponseVo userReg(User user) {
+        User byUsername = userMapper.findByUsername(user.getUsername());
 
         if (byUsername != null){
             return new ResponseVo("该username已经存在",null,"0x202");
         }
-        byUsername.setCreateTime(new Date());
-        Long aLong = userMapper.userReg(userRegBo);
+
+        user.setCreateTime(new Date());
+
+        Long aLong = userMapper.userReg(user);
         if (aLong.longValue() == 0L){
             return new ResponseVo("注册失败",null,"0x500");
         }

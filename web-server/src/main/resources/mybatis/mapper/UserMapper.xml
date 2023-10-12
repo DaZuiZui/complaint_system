@@ -79,12 +79,18 @@
     <!--
     @author zhuxinyu
     用户通过userReg进行注册
-    -->
-    <insert id="userReg">
+        <insert id="userReg">
         insert into
             user(username,password,name,role,college,org,grade,student_id,create_by,create_time,update_by,update_time,status,del_flag)
         values
             (#{username},#{password},#{name},0,#{college},#{org},#{grade},#{student_id},#{create_by},#{create_time},#{update_by},#{update_time},0,0);
+    </insert>
+    -->
+    <insert id="userReg">
+        insert into
+            user
+        values
+            (null,#{username},#{password},#{name},0,#{college},#{org},#{grade},#{studentId},#{createBy},#{createTime},#{updateBy},#{updateTime},0,0);
     </insert>
 
     <!--
