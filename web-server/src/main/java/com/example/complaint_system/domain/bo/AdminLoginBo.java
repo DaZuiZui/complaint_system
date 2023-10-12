@@ -19,7 +19,6 @@ public class AdminLoginBo implements Serializable{
         this.password = password;
     }
 
-
     public String getToken() {
         return token;
     }

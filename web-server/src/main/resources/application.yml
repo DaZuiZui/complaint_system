@@ -5,8 +5,6 @@ spring:
     url: jdbc:mysql://172.30.34.66:3306/complaint
     username: root
     password: TLMTEAMYLL4523..
-  jackson:
-    date-format: yyyy-MM-dd HH:mm:ss
-    time-zone: GMT+8
+
 server:
   port: 8001

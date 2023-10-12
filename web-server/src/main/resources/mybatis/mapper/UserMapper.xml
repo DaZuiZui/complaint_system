@@ -3,6 +3,44 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.complaint_system.mapper.UserMapper">
+    <update id="updataById" parameterType="com.example.complaint_system.domain.User">
+        update
+        user
+        <set>
+            <if test="true">
+                update_by = #{updateBy},update_time = #{updateTime},
+            </if>
+            <if test="username != null and username != ''">
+                username = #{username},
+            </if>
+            <if test="password != null and password != ''">
+                password = #{password},
+            </if>
+            <if test="name != null and name != ''">
+                name = #{name},
+            </if>
+            <if test="grade != null and grade != ''">
+                grade = #{grade},
+            </if>
+            <if test="studentId != null and studentId != ''">
+                student_id = #{studentId},
+            </if>
+            <if test="college != null">
+                college = #{college},
+            </if>
+            <if test="org != null">
+                org = #{org},
+            </if>
+            <if test="status != null ">
+                status = #{status},
+            </if>
+            <if test="delFlag != null  ">
+                del_flag = #{delFlag}
+            </if>
+        </set>
+        where
+        id = #{id}
+    </update>
 
     <!--
         @author hanlaining
@@ -25,10 +63,36 @@
         from
             user
         where
-              username = #{username} and
-              status = 0 and
-              del_flag = 0
+            username = #{username} and
+            status = 0 and
+            del_flag = 0
         limit 1
     </select>
+
+    <select id="selectById" resultType="com.example.complaint_system.domain.User"
+            parameterType="java.lang.Long">
+        select * from user
+        where id = #{id}
+        limit 1
+    </select>
+
+    <!--
+    @author zhuxinyu
+    用户通过userReg进行注册
+    -->
+    <insert id="userReg">
+        insert into user(username,password,college,org,grade,student_id)values (#{username},#{password},#{college},#{org},#{grade},#{student_id});
+    </insert>
+
+    <!--
+        @author zhuxinyu
+        根据username进行查询
+    -->
+    <select id="findByUsername" resultType="com.example.complaint_system.domain.User">
+        select * from user
+        where username = #{username}
+            limit 1
+    </select>
+
 
 </mapper>

@@ -30,6 +30,7 @@ public class AdminServiceImpl implements AdminService {
      */
     @Override
     public ResponseVo adminLogin(AdminLoginBo adminLoginBo) {
+
         //通过username 去获取用户
         User user = adminMapper.adminLogin(adminLoginBo);
 

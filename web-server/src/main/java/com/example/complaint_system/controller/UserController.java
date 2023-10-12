@@ -1,8 +1,7 @@
 package com.example.complaint_system.controller;
 
 import com.alibaba.fastjson2.JSONArray;
-import com.example.complaint_system.domain.bo.DeleteByIdBo;
-import com.example.complaint_system.domain.bo.UserLoginBo;
+import com.example.complaint_system.domain.bo.*;
 import com.example.complaint_system.domain.vo.ResponseVo;
 import com.example.complaint_system.serivce.UserSerivce;
 import io.swagger.annotations.Api;
@@ -51,4 +50,44 @@ public class UserController {
         return JSONArray.toJSONString(userSerivce.deleteById(deleteByIdBo));
     }
 
+    /**
+     * @author yuyu 2023-9-16
+     *    管理员查找用户通过id
+     * @param selectByIdBo
+     * @return String.class
+     */
+    @ApiOperation("管理员查找用户通过id")
+    @PostMapping("/selectById")
+    public String selectById(@RequestBody SelectByIdBo selectByIdBo){
+        return JSONArray.toJSONString(userSerivce.selectById(selectByIdBo));
+    }
+
+    /**
+     * @author hln 2023-10-11
+     *    修改用户通过id
+     * @param updataByIdBo
+     * @return String.class
+     */
+    @ApiOperation("修改用户通过id")
+    @PostMapping("/updata")
+    public String updataById(@RequestBody UpdataByIdBo updataByIdBo){
+        return JSONArray.toJSONString(userSerivce.updataById(updataByIdBo));
+    }
+
+    /**
+     * @author zhuxinyu
+     *用户注册
+     *    用户注册，首先查看用户username是否存在如果存在则注册失败，如果当前username在数据库中不存在则注册成功。
+     * @param userRegBo
+     * @return
+     */
+    @PostMapping("/userReg")
+    @ApiOperation("用户注册")
+    public String userReg(@RequestBody UserRegBo userRegBo){
+        if (userRegBo == null){
+            JSONArray.toJSONString( new ResponseVo("参数为null", null, "0x455"));
+        }
+
+        return JSONArray.toJSONString(userSerivce.userReg(userRegBo));
+    }
 }
