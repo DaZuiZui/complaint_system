@@ -5,7 +5,6 @@ import java.util.Date;
 
 /**
  * 投诉图片添加bo
- *
  * 这里有问题，为什么不选择一个Task实体作为接受参数？
  */
 public class TaskImgAddByBo implements Serializable {

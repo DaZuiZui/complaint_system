@@ -33,7 +33,7 @@ public interface TaskImgMapper {
      * @param taskImgAddByBo
      * @return
      */
-    public void addTaskImg(TaskImgAddByBo taskImgAddByBo);
+    public Long addTaskImg(TaskImgAddByBo taskImgAddByBo);
 
     /**
      * @auther Oh… Yeah!!! 2023-10-11

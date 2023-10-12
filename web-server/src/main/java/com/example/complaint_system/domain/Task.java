@@ -3,8 +3,11 @@ package com.example.complaint_system.domain;
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+ *
+ */
 public class Task implements Serializable {
-    private String token;
+    private String token;       //
     private String context;
     private Date createTime;
     private Long createBy;

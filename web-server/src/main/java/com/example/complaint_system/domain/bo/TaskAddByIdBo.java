@@ -3,6 +3,10 @@ package com.example.complaint_system.domain.bo;
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * 添加进程 有问题
+ * 这里有问题，为什么不选择一个Task实体作为接受参数？
+ */
 public class TaskAddByIdBo implements Serializable {
     private String token;
     private String context;
