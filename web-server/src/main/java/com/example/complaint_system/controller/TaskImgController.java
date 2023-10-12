@@ -2,7 +2,9 @@ package com.example.complaint_system.controller;
 
 import com.alibaba.fastjson2.JSONArray;
 import com.example.complaint_system.domain.bo.TaskImgAddBo;
+import com.example.complaint_system.domain.bo.TaskImgDeleteByIdBo;
 import com.example.complaint_system.domain.bo.TaskImgSelectByIdBo;
+import com.example.complaint_system.domain.bo.TaskImgUpdateByIdBo;
 import com.example.complaint_system.serivce.TaskImgService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -27,7 +29,7 @@ public class TaskImgController {
      */
     @PostMapping("/select")
     @ApiOperation("根据id查询TaskImg数据")
-    public String articleSelect(@RequestBody TaskImgSelectByIdBo taskImgSelectByIdBo){
+    public String taskImgSelect(@RequestBody TaskImgSelectByIdBo taskImgSelectByIdBo){
         return JSONArray.toJSONString(taskImgService.taskImgSelectById(taskImgSelectByIdBo));
     }
 
@@ -40,9 +42,37 @@ public class TaskImgController {
      */
     @PostMapping("/add")
     @ApiOperation("增加TaskImg数据")
-    public String articleAdd(@RequestBody TaskImgAddBo taskImgAddBo){
+    public String taskImgAdd(@RequestBody TaskImgAddBo taskImgAddBo){
         return JSONArray.toJSONString(taskImgService.taskImgAdd(taskImgAddBo));
     }
+
+    /**
+     * @auther Oh… Yeah!!! 2023-10-11
+     *      通过id删除TaskImg数据.
+     * @param taskImgDeleteByIdBo
+     * @return String.class
+     */
+    @PostMapping("/delete")
+    @ApiOperation("通过id删除TaskImg数据")
+    public String taskImgDeleteById(@RequestBody TaskImgDeleteByIdBo taskImgDeleteByIdBo){
+        return JSONArray.toJSONString(taskImgService.taskImgDeleteById(taskImgDeleteByIdBo));
+    }
+
+
+    /**
+     * @author Oh… Yeah, 2023-9-12
+     *      通过id更新TaskImg数据.
+     * @param taskImgUpdateByIdBo
+     * @return String.class
+     */
+    @ApiOperation("管理员通过id修改TaskImg数据")
+    @PostMapping("/update")
+    public String taskImgUpdateById(@RequestBody TaskImgUpdateByIdBo taskImgUpdateByIdBo){
+        return JSONArray.toJSONString(taskImgService.taskImgUpdateById(taskImgUpdateByIdBo));
+    }
+
+
+
 
 
 }

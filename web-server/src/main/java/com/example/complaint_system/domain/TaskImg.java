@@ -5,6 +5,9 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * 投诉照片实体类
+ */
 public class TaskImg implements Serializable {
 
     private Long id;
