@@ -8,3 +8,8 @@ spring:
 
 server:
   port: 8001
+
+# 选择api项目下的resouces路径下的user文件夹
+filePath: "/Users/yangyida/Documents/project/ZuiOJ/ZuiOJ/basic-api/src/main/resources/users/"
+# 服务器url路径
+projecturl: "http://127.0.0.1:8001"
