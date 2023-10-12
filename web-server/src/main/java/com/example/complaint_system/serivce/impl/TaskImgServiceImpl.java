@@ -52,22 +52,16 @@ public class TaskImgServiceImpl implements TaskImgService {
         String imgUrl = taskImgAddByBo.getImgUrl();
 
         if (imgUrl == null || imgUrl == "") {
-
-            return new ResponseVo("增加失败,ImgUrl不能为null或者空串，必须要正确填写才能增加图片数据", null, "0x200");
-
+            return new ResponseVo("增加失败,ImgUrl不能为null或者空串，必须要正确填写才能增加图片数据", null, "0x500");
         }
 
-        TaskImg taskImg = taskImgMapper.selectByimgUrl(imgUrl);
 
-        if (taskImg == null) {
-
-            taskImgMapper.addTaskImg(taskImgAddByBo);
-
-            return new ResponseVo("增加成功", "存入数据库的数据是：" + taskImgMapper.selectByimgUrl(imgUrl), "0x500");
+        Long aLong = taskImgMapper.addTaskImg(taskImgAddByBo);
+        if (aLong.longValue() == 0){
+            return new ResponseVo("增加失败",  null, "0x500");
         }
 
-        return new ResponseVo("增加失败，要增加的图片数据已经存在", null, "0x200");
-
+        return new ResponseVo("增加成功", null, "0x200");
     }
 
     /**
@@ -82,22 +76,15 @@ public class TaskImgServiceImpl implements TaskImgService {
         Long id = taskImgDeleteByIdBo.getId();
 
         if (id == 0L || id == null){
-
             return new ResponseVo("删除失败，id不能为空或者是0", null, "0x200");
-
         }
 
-        TaskImg taskImg = taskImgMapper.selectById(id);
-
-        if (taskImg == null) {
-
-            return new ResponseVo("删除失败，要删除的图片数据不存在", null, "0x200");
-
+        Long numbersOfOpetion = taskImgMapper.deleteByIdTaskImg(id);
+        if (numbersOfOpetion.longValue() == 0l) {
+            return new ResponseVo("删除失败", null, "0x500");
         }
 
-        return new ResponseVo("删除成功", taskImgMapper.deleteByIdTaskImg(id), "0x200");
-
-
+        return new ResponseVo("删除成功",null, "0x200");
     }
 
 
@@ -111,26 +98,20 @@ public class TaskImgServiceImpl implements TaskImgService {
     public ResponseVo taskImgUpdateById(TaskImgUpdateByIdBo taskImgUpdateByIdBo) {
 
         TaskImg taskImg = taskImgUpdateByIdBo.getTaskImg();
-
         Long id = taskImg.getId();
 
         if (id == 0L || id == null){
-
             return new ResponseVo("更新失败，id不能为空或者是0", null, "0x200");
         }
 
-        if ( taskImgMapper.selectById(id) == null) {
-            return new ResponseVo("需要更新的数据不存在", null, "0x500");
-        }
-
-
         Long numbersOfOpertion = taskImgMapper.updateByIdTaskImg(taskImg);
 
-        return new ResponseVo("更新成功", "以下是更新入库的数据：" + taskImgMapper.selectById(id), "0x200");
+        if (numbersOfOpertion.longValue() == 0l){
+            return new ResponseVo("更新失败", taskImgMapper.selectById(id), "0x500");
+        }
 
+        return new ResponseVo("更新成功", taskImgMapper.selectById(id), "0x200");
     }
-
-
 }
 
 

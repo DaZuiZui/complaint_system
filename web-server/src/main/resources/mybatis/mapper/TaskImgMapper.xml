@@ -21,7 +21,7 @@
 
     <!--
             @auther Oh… Yeah!!! 2023-10-11
-            根据imgUrl查询TaskImg
+            根据imgUrl查询TaskImg out
     -->
     <select id="selectByimgUrl" resultType="com.example.complaint_system.domain.TaskImg">
         select

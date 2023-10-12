@@ -7,6 +7,9 @@ import java.util.Map;
  * ThreadLocal 工具类
  */
 public class ThreadLocalUtil {
+    /**
+     * 用户鉴权ThreadLocal
+     */
     public static ThreadLocal<Map<String,Map<String,Object>>> mapThreadLocalOfJWT
             = ThreadLocal.withInitial(()-> new HashMap<String,Map<String,Object>>());
 
