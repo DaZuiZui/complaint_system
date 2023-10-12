@@ -12,7 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
- * 投诉图片业务接口实现类
+ *  2023-10-12
+ *  投诉图片业务接口实现类
  */
 @Service
 public class TaskImgServiceImpl implements TaskImgService {
