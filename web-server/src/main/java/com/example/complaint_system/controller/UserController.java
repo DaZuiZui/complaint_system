@@ -1,10 +1,7 @@
 package com.example.complaint_system.controller;
 
 import com.alibaba.fastjson2.JSONArray;
-import com.example.complaint_system.domain.bo.DeleteByIdBo;
-import com.example.complaint_system.domain.bo.SelectByIdBo;
-import com.example.complaint_system.domain.bo.UpdataByIdBo;
-import com.example.complaint_system.domain.bo.UserLoginBo;
+import com.example.complaint_system.domain.bo.*;
 import com.example.complaint_system.domain.vo.ResponseVo;
 import com.example.complaint_system.serivce.UserSerivce;
 import io.swagger.annotations.Api;
@@ -77,4 +74,20 @@ public class UserController {
         return JSONArray.toJSONString(userSerivce.updataById(updataByIdBo));
     }
 
+    /**
+     * @author zhuxinyu
+     *用户注册
+     *    用户注册，首先查看用户username是否存在如果存在则注册失败，如果当前username在数据库中不存在则注册成功。
+     * @param userRegBo
+     * @return
+     */
+    @PostMapping("/userReg")
+    @ApiOperation("用户注册")
+    public String userReg(@RequestBody UserRegBo userRegBo){
+        if (userRegBo == null){
+            JSONArray.toJSONString( new ResponseVo("参数为null", null, "0x455"));
+        }
+
+        return JSONArray.toJSONString(userSerivce.userReg(userRegBo));
+    }
 }

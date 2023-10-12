@@ -2,6 +2,7 @@ package com.example.complaint_system.mapper;
 
 import com.example.complaint_system.domain.User;
 import com.example.complaint_system.domain.bo.UserLoginBo;
+import com.example.complaint_system.domain.bo.UserRegBo;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -40,4 +41,20 @@ public interface UserMapper {
      * @return
      */
     public Long updataById(User user);
+
+    /**
+     * @author zhuxinyu 2023-10-12
+     *      通过username查询用户是否存在
+     * @param username
+     * @return
+     */
+    public User findByUsername(String username);
+
+    /**
+     * @author zhuxinyu 2023-10-12
+     *      将userRegBo实体写入mysql
+     * @param userRegBo
+     * @return
+     */
+    public Long userReg(UserRegBo userRegBo);
 }

@@ -13,14 +13,16 @@ public class UserRegBo implements Serializable {
     private String org;
     private String grade;
     private String student_id;
+    private Integer status;
 
-    public UserRegBo(String username, String password, Integer college, String org, String grade, String student_id) {
+    public UserRegBo(String username, String password, Integer college, String org, String grade, String student_id, Integer status) {
         this.username = username;
         this.password = password;
         this.college = college;
         this.org = org;
         this.grade = grade;
         this.student_id = student_id;
+        this.status = status;
     }
 
     public String getUsername() {
@@ -71,6 +73,14 @@ public class UserRegBo implements Serializable {
         this.student_id = student_id;
     }
 
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
     @Override
     public String toString() {
         return "UserRegBo{" +
@@ -80,6 +90,7 @@ public class UserRegBo implements Serializable {
                 ", org='" + org + '\'' +
                 ", grade='" + grade + '\'' +
                 ", student_id='" + student_id + '\'' +
+                ", status=" + status +
                 '}';
     }
 }
