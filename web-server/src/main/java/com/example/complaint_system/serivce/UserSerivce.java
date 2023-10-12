@@ -22,7 +22,7 @@ public interface UserSerivce {
      * @param deleteByIdBo
      * @return ResponseVo.class
      */
-    public ResponseVo deleteById(DeleteByIdBo deleteByIdBo);
+    public ResponseVo deleteById(UserDeleteByIdBo deleteByIdBo);
 
     /**
      * @author hln 2023-10-11
@@ -30,7 +30,7 @@ public interface UserSerivce {
      * @param selectByIdBo
      * @return ResponseVo.class
      */
-    public ResponseVo selectById(SelectByIdBo selectByIdBo);
+    public ResponseVo selectById(UserSelectByIdBo selectByIdBo);
 
     /**
      * @author hln 2023-10-11

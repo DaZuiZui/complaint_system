@@ -11,6 +11,9 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ *  投诉照片板块接口
+ */
 @CrossOrigin
 @Api(value = "投诉照片板块接口",tags = {"投诉照片板块接口"})
 @RestController
@@ -19,7 +22,6 @@ public class TaskImgController {
 
     @Autowired
     private TaskImgService taskImgService;
-
 
     /**
      * @auther Oh… Yeah!!! 2023-10-11

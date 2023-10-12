@@ -47,7 +47,7 @@ public class UserServiceImpl implements UserSerivce {
      * 通过id删除用户
      */
     @Override
-    public ResponseVo deleteById(DeleteByIdBo deleteByIdBo) {
+    public ResponseVo deleteById(UserDeleteByIdBo deleteByIdBo) {
         Long numbersOfOpertion = userMapper.delelteById(deleteByIdBo.getId());
         if (numbersOfOpertion == null ||  numbersOfOpertion.longValue() == 0l) {
             return new ResponseVo("删除失败", null, "0x500");
@@ -63,7 +63,7 @@ public class UserServiceImpl implements UserSerivce {
      * @return String.class
      */
     @Override
-    public ResponseVo selectById(SelectByIdBo selectByIdBo) {
+    public ResponseVo selectById(UserSelectByIdBo selectByIdBo) {
         User user = userMapper.selectById(selectByIdBo.getId());
 
         return new ResponseVo(null, user, "0x200");

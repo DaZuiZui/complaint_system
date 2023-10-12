@@ -46,7 +46,7 @@ public class UserController {
      */
     @PostMapping("/delete")
     @ApiOperation("删除用户通过id")
-    public String deleteById(@RequestBody DeleteByIdBo deleteByIdBo){
+    public String deleteById(@RequestBody UserDeleteByIdBo deleteByIdBo){
         return JSONArray.toJSONString(userSerivce.deleteById(deleteByIdBo));
     }
 
@@ -58,7 +58,7 @@ public class UserController {
      */
     @ApiOperation("管理员查找用户通过id")
     @PostMapping("/selectById")
-    public String selectById(@RequestBody SelectByIdBo selectByIdBo){
+    public String selectById(@RequestBody UserSelectByIdBo selectByIdBo){
         return JSONArray.toJSONString(userSerivce.selectById(selectByIdBo));
     }
 

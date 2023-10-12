@@ -5,16 +5,16 @@ import java.io.Serializable;
 /**
  * 通过id删除
  */
-public class DeleteByIdBo implements Serializable {
+public class UserDeleteByIdBo implements Serializable {
     private String token;
     private Long id;
 
-    public DeleteByIdBo(String token, Long id) {
+    public UserDeleteByIdBo(String token, Long id) {
         this.token = token;
         this.id = id;
     }
 
-    public DeleteByIdBo() {
+    public UserDeleteByIdBo() {
     }
 
     public String getToken() {
@@ -35,7 +35,7 @@ public class DeleteByIdBo implements Serializable {
 
     @Override
     public String toString() {
-        return "DeleteByIdBo{" +
+        return "UserDeleteByIdBo{" +
                 "token='" + token + '\'' +
                 ", id=" + id +
                 '}';

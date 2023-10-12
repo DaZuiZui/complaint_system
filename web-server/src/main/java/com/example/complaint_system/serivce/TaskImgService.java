@@ -6,6 +6,9 @@ import com.example.complaint_system.domain.bo.TaskImgSelectByIdBo;
 import com.example.complaint_system.domain.bo.TaskImgUpdateByIdBo;
 import com.example.complaint_system.domain.vo.ResponseVo;
 
+/**
+ * 投诉图片业务接口
+ */
 public interface TaskImgService {
 
     /**

@@ -4,6 +4,9 @@ import com.example.complaint_system.domain.TaskImg;
 import com.example.complaint_system.domain.bo.TaskImgAddByBo;
 import org.apache.ibatis.annotations.Mapper;
 
+/**
+ * 投诉图片持久层
+ */
 @Mapper
 public interface TaskImgMapper {
 
