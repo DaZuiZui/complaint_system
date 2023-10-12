@@ -6,7 +6,8 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 投诉图片添加bo
+ *  2023-10-12
+ *  投诉图片添加bo
  */
 public class TaskImgAddByBo implements Serializable {
 

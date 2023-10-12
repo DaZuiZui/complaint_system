@@ -3,7 +3,8 @@ package com.example.complaint_system.domain.bo;
 import java.io.Serializable;
 
 /**
- * 通过id删除task
+ *  2023-10-12
+ *  通过id删除task
  */
 public class TaskImgDeleteByIdBo implements Serializable {
 
