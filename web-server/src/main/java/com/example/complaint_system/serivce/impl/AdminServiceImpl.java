@@ -34,15 +34,15 @@ public class AdminServiceImpl implements AdminService {
         //通过username 去获取用户
         User user = adminMapper.adminLogin(adminLoginBo);
 
+        //比较用户密码和数据库中密码是否一致
+        if (user == null || !user.getPassword().equals(adminLoginBo.getPassword())) {
+            return new ResponseVo("账号或者密码错误", null, "0x201");
+        }
+
         //比较是否为admin
         if (user.getRole() == null || user.getRole() == 0) {
             //to do is not admin
             return new ResponseVo("此用户不是管理员,请重新登录", null, "0x201");
-        }
-
-        //比较用户密码和数据库中密码是否一致
-        if (user == null || !user.getPassword().equals(adminLoginBo.getPassword())) {
-            return new ResponseVo("账号或者密码错误", null, "0x201");
         }
 
         String jwt = JwtUtil.createJWT(user);
