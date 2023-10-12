@@ -123,6 +123,8 @@ export default {
     methods: {
         //提交登入
         async submit() {
+            this.user.college = this.input
+
             if (this.user.username == "") {
                 alert("用户名不能为空!")
                 return
@@ -173,7 +175,6 @@ export default {
                 alert("学号不能为空!")
                 return
             }
-            this.user.college = this.input
             let obj = await synRequestPost("/user/userReg", this.user);
             if (obj.code == '0x200') {
                 alert(obj.message)
