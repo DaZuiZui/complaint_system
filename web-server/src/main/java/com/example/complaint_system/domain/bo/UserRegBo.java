@@ -7,6 +7,7 @@ import java.io.Serializable;
  * 用户注册
  */
 public class UserRegBo implements Serializable {
+    private String token;
     private String username;
     private String password;
     private Integer college;
@@ -15,14 +16,26 @@ public class UserRegBo implements Serializable {
     private String student_id;
     private Integer status;
 
-    public UserRegBo(String username, String password, Integer college, String org, String grade, String student_id, Integer status) {
-        this.username = username;
-        this.password = password;
-        this.college = college;
-        this.org = org;
-        this.grade = grade;
-        this.student_id = student_id;
-        this.status = status;
+    @Override
+    public String toString() {
+        return "UserRegBo{" +
+                "token='" + token + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", college=" + college +
+                ", org='" + org + '\'' +
+                ", grade='" + grade + '\'' +
+                ", student_id='" + student_id + '\'' +
+                ", status=" + status +
+                '}';
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 
     public String getUsername() {
@@ -81,16 +94,14 @@ public class UserRegBo implements Serializable {
         this.status = status;
     }
 
-    @Override
-    public String toString() {
-        return "UserRegBo{" +
-                "username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", college=" + college +
-                ", org='" + org + '\'' +
-                ", grade='" + grade + '\'' +
-                ", student_id='" + student_id + '\'' +
-                ", status=" + status +
-                '}';
+    public UserRegBo(String token, String username, String password, Integer college, String org, String grade, String student_id, Integer status) {
+        this.token = token;
+        this.username = username;
+        this.password = password;
+        this.college = college;
+        this.org = org;
+        this.grade = grade;
+        this.student_id = student_id;
+        this.status = status;
     }
 }
