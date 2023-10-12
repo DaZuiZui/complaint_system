@@ -12,7 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
- * 投诉图片业务接口实现类
+ *  2023-10-12
+ *  投诉图片业务接口实现类
  */
 @Service
 public class TaskImgServiceImpl implements TaskImgService {
@@ -30,7 +31,7 @@ public class TaskImgServiceImpl implements TaskImgService {
     @Override
     public ResponseVo taskImgSelectById(TaskImgSelectByIdBo taskImgSelectByIdBo) {
 
-        TaskImg taskImg = taskImgMapper.selectById(taskImgSelectByIdBo.getId());
+        TaskImg taskImg = taskImgMapper.selectByIdTaskImg(taskImgSelectByIdBo.getId());
 
         if (taskImg == null) {
             return new ResponseVo("查询的数据不存在,", null, "0x500");
@@ -49,18 +50,10 @@ public class TaskImgServiceImpl implements TaskImgService {
     @Override
     public ResponseVo taskImgAdd(TaskImgAddByBo taskImgAddByBo) {
 
-        String imgUrl = taskImgAddByBo.getImgUrl();
-
-        if (imgUrl == null || imgUrl == "") {
-            return new ResponseVo("增加失败,ImgUrl不能为null或者空串，必须要正确填写才能增加图片数据", null, "0x500");
-        }
-
-
         Long aLong = taskImgMapper.addTaskImg(taskImgAddByBo);
         if (aLong.longValue() == 0){
             return new ResponseVo("增加失败",  null, "0x500");
         }
-
         return new ResponseVo("增加成功", null, "0x200");
     }
 
@@ -73,17 +66,10 @@ public class TaskImgServiceImpl implements TaskImgService {
     @Override
     public ResponseVo taskImgDeleteById(TaskImgDeleteByIdBo taskImgDeleteByIdBo) {
 
-        Long id = taskImgDeleteByIdBo.getId();
-
-        if (id == 0L || id == null){
-            return new ResponseVo("删除失败，id不能为空或者是0", null, "0x200");
-        }
-
-        Long numbersOfOpetion = taskImgMapper.deleteByIdTaskImg(id);
+        Long numbersOfOpetion = taskImgMapper.deleteByIdTaskImg(taskImgDeleteByIdBo.getId());
         if (numbersOfOpetion.longValue() == 0l) {
             return new ResponseVo("删除失败", null, "0x500");
         }
-
         return new ResponseVo("删除成功",null, "0x200");
     }
 
@@ -98,19 +84,13 @@ public class TaskImgServiceImpl implements TaskImgService {
     public ResponseVo taskImgUpdateById(TaskImgUpdateByIdBo taskImgUpdateByIdBo) {
 
         TaskImg taskImg = taskImgUpdateByIdBo.getTaskImg();
-        Long id = taskImg.getId();
-
-        if (id == 0L || id == null){
-            return new ResponseVo("更新失败，id不能为空或者是0", null, "0x200");
-        }
-
         Long numbersOfOpertion = taskImgMapper.updateByIdTaskImg(taskImg);
 
         if (numbersOfOpertion.longValue() == 0l){
-            return new ResponseVo("更新失败", taskImgMapper.selectById(id), "0x500");
+            return new ResponseVo("更新失败", null, "0x500");
         }
 
-        return new ResponseVo("更新成功", taskImgMapper.selectById(id), "0x200");
+        return new ResponseVo("更新成功", null, "0x200");
     }
 }
 

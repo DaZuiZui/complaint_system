@@ -5,7 +5,8 @@ import com.example.complaint_system.domain.bo.TaskImgAddByBo;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
- * 投诉图片持久层
+ *  2023-10-12
+ *  投诉图片持久层
  */
 @Mapper
 public interface TaskImgMapper {
@@ -16,16 +17,7 @@ public interface TaskImgMapper {
      * @param id
      * @return TaskImg
      */
-    public TaskImg selectById(Long id);
-
-    /**
-     * @auther Oh… Yeah!!! 2023-10-11
-     *      根据imgUrl查询数据.
-     * @param
-     * @return
-     */
-    public TaskImg selectByimgUrl(String imgUrl);
-
+    public TaskImg selectByIdTaskImg(Long id);
 
     /**
      * @auther Oh… Yeah!!! 2023-10-11

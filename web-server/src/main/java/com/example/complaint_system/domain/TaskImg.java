@@ -12,15 +12,21 @@ import java.util.Date;
 public class TaskImg implements Serializable {
 
     private Long id;
+    //投诉图片url
     private String imgUrl;
+    //归属投诉订单id
     private Long partId;
-  //  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Shanghai")
+    //创建时间
     private Date createTime;
+    //创建人
     private Long createBy;
+    //更新人
     private Long updateBy;
- //   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Shanghai")
+    //更新时间
     private Date updateTime;
+    //状态
     private Integer status;
+    //逻辑删除
     private Integer delFlag;
 
 

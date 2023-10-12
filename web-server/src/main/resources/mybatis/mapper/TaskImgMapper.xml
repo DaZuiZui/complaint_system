@@ -9,27 +9,13 @@
          @auther Oh… Yeah!!! 2023-10-11
          根据id查询TaskImg
     -->
-    <select id="selectById" resultType="com.example.complaint_system.domain.TaskImg">
+    <select id="selectByIdTaskImg" resultType="com.example.complaint_system.domain.TaskImg">
         select
                 *
         from
               task_img
         where
             id = #{id}
-        limit 1
-    </select>
-
-    <!--
-            @auther Oh… Yeah!!! 2023-10-11
-            根据imgUrl查询TaskImg out
-    -->
-    <select id="selectByimgUrl" resultType="com.example.complaint_system.domain.TaskImg">
-        select
-            *
-        from
-            task_img
-        where
-            img_url = #{imgUrl}
         limit 1
     </select>
 
