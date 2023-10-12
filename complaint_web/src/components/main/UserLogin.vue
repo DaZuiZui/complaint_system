@@ -73,7 +73,7 @@ methods: {
   //提交登入
   async submit(){
        this.switchbutton = true;
-       var object = synRequestPost("/user/usawait erlogin",this.userLoginBo);
+       var object = synRequestPost("/user/Login",this.userLoginBo);
        if(object.code != "0x200"){
           alert(object.message);
           this.switchbutton = false;
