@@ -3,9 +3,6 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.complaint_system.mapper.UserMapper">
-    <!--
-        通过id修改用户
-    -->
     <update id="updataById" parameterType="com.example.complaint_system.domain.User">
         update
         user
@@ -72,24 +69,16 @@
         limit 1
     </select>
 
-    <!--
-        @auhtor zhuxinyu
-        通过id查询user
-    -->
     <select id="selectById" resultType="com.example.complaint_system.domain.User"
             parameterType="java.lang.Long">
-        select
-               *
-        from
-             user
-        where
-              id = #{id}
+        select * from user
+        where id = #{id}
         limit 1
     </select>
 
     <!--
-        @author zhuxinyu
-        用户通过userReg进行注册
+    @author zhuxinyu
+    用户通过userReg进行注册
     -->
     <insert id="userReg">
         insert into
@@ -105,7 +94,7 @@
     <select id="findByUsername" resultType="com.example.complaint_system.domain.User">
         select * from user
         where username = #{username}
-            limit 1
+        limit 1
     </select>
 
 

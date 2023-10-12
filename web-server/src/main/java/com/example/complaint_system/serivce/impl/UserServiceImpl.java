@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.HashMap;
 
 /**
  * 用户业务接口实现
@@ -36,8 +37,13 @@ public class UserServiceImpl implements UserSerivce {
         }
 
         String jwt = JwtUtil.createJWT(userInDB);
+        Integer role = userInDB.getRole();
 
-        return new ResponseVo("登入成功",jwt,"0x200");
+        HashMap<String,Object> map = new HashMap<>();
+        map.put("jwt",jwt);
+        map.put("role",role);
+
+        return new ResponseVo("登入成功",map,"0x200");
     }
 
     /**
