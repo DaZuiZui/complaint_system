@@ -6,6 +6,8 @@ import ComplaintManagement from '@/components/main/ComplaintManagement.vue'
 import AdminManagement from '@/components/main/AdminManagement.vue'
 import UserLogin from '@/components/main/UserLogin.vue'
 import UserRegister from '@/components/main/UserRegister.vue'
+import UserInfo from '@/components/main/UserInfo.vue'
+import Home from '@/components/main/Home.vue'
 
 
 Vue.use(Router)
@@ -13,22 +15,33 @@ Vue.use(Router)
 export default new Router({
   mode: 'history',
   base: '/h',
-  
+
   routes: [
     {
-      path: '/',
+      path: '/helloworld',
       name: 'HelloWorld',
       component: HelloWorld
     },
+
     {
-      path: '/userManagement',
-      name: 'UserManagement',
-      component: UserManagement
-    },
-    {
-      path: '/complaintManagement',
-      name: 'complaintManagement',
-      component: ComplaintManagement
+      path: '/',
+      component:Home,
+      children: [
+        {
+          path: '/complaintManagement',
+          name: 'complaintManagement',
+          component: ComplaintManagement,
+        },
+        {
+          path: '/userManagement',
+          name: 'UserManagement',
+          component: UserManagement
+        },{
+          path: '/userInfo',
+          name: 'UserInfo',
+          component: UserInfo
+        }
+      ]
     },
     {
       path: '/adminManagement',
@@ -45,6 +58,6 @@ export default new Router({
       name: 'UserRegister',
       component: UserRegister
     },
-    
+
   ]
 })

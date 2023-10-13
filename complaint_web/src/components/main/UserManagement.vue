@@ -1,8 +1,5 @@
 <template>
-    <div class="hello">
-        <div>
-            <Top></Top>
-        </div>
+   
         
         <!-- Main content -->
         <section >
@@ -59,21 +56,14 @@
             </div>
         </section>
   
-        <footer class="position-relative" id="footer-main">
-            <Foot></Foot>
-        </footer>
-    </div>
+        
   </template>
   
   <script>
-  import Foot from '../frame/Foot.vue';
-  import Top  from '../frame/LoginTop.vue'
+
   import {synRequestPost,synRequestGet} from "../../../static/request"
   
   export default {
-    components: {
-           Foot,Top
-      },
     data () {
       return {
         user: {

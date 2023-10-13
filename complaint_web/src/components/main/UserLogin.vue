@@ -33,10 +33,8 @@
             </div>
           </div>
         </div>
-
       </div>
     </section>
-
     <footer class="position-relative" id="footer-main">
       <Foot></Foot>
     </footer>
@@ -94,7 +92,7 @@ export default {
       }
       setCookie("token", object.data.jwt);
       alert(object.message);
-      setCookie("role",object.data.role)
+      localStorage.setItem("role",JSON.stringify(object.data.role))
       this.$router.push("/complaintManagement")
 
     },

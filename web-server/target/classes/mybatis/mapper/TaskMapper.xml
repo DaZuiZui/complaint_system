@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.complaint_system.mapper.TaskImgMapper">
+
+
+    <!--
+         @auther zhuxinyu 2023-10-12
+         根据id查询Task
+    -->
+    <select id="selectById" resultType="com.example.complaint_system.domain.Task">
+        select
+                *
+        from
+            task
+        where
+            id = #{id}
+        limit 1
+    </select>
+
+    <!--
+            @auther zhuxinyu 2023-10-11
+            根据context查询Task
+    -->
+    <select id="selectByContext" resultType="com.example.complaint_system.domain.Task">
+        select
+            *
+        from
+            task
+        where
+            context = #{context}
+            limit 1
+    </select>
+
+    <!--
+         @auther zhuxinyu 2023-10-12
+         增加Task数据
+    -->
+    <insert id="addTask">
+        insert into
+            task
+        values
+            (null,#{context},#{createBy},
+             #{createTime},#{updateBy},
+             #{updateTime},#{status},
+             #{delFlag})
+    </insert>
+
+    <!--
+        @auther zhuxinyu 2023-10-12
+        删除Task数据
+    -->
+    <delete id="deleteByIdTask" >
+        delete from task where id=#{id}
+    </delete>
+
+    <!--
+        @auther xhuxinyu 2023-10-12
+        更新Task数据
+    -->
+    <update id="updateByIdTask">
+        update task
+        <set>
+            <if test="context != null and context != '' ">
+                context = #{context},
+            </if>
+            <if test="createBy != null ">
+                create_by = #{createBy},
+            </if>
+            <if test="createTime != null ">
+                create_time = #{createTime},
+            </if>
+            <if test="updateBy != null">
+                update_by = #{updateBy},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime},
+            </if>
+            <if test="status != null">
+                status = #{status},
+            </if>
+            <if test="delFlag != null">
+                del_flag = #{delFlag}
+            </if>
+        </set>
+        where
+            id = #{id}
+    </update>
+</mapper>
+    
