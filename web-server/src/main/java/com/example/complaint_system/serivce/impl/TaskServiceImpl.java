@@ -11,7 +11,10 @@ import com.example.complaint_system.serivce.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
+/**
+ *  2023-10-12
+ *  投诉内容业务接口实现类
+ */
 
 @Service
 public class TaskServiceImpl implements TaskService {
@@ -47,7 +50,6 @@ public class TaskServiceImpl implements TaskService {
     public ResponseVo taskAdd(TaskAddByIdBo taskAddByIdBo){
 
         Long  aLong = taskMapper.addTask(taskAddByIdBo.getTask());
-
         if (aLong.longValue() == 0) {
             return new ResponseVo("增加失败",  null, "0x500");
         }

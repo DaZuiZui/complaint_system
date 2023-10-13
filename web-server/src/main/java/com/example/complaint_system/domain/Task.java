@@ -5,7 +5,8 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- *
+ * @author zhuxinyu 2023-10-12
+ *投诉内容实体类
  */
 public class Task implements Serializable {
     private Long id;
