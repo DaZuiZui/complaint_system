@@ -88,4 +88,14 @@ public class TaskServiceImpl implements TaskService {
         }
         return new ResponseVo("更新成功", null, "0x200");
     }
+
+
+
+    @Override
+    public ResponseVo taskSelectAll() {
+
+        =taskMapper.taskSelectAll();
+
+        return null;
+    }
 }

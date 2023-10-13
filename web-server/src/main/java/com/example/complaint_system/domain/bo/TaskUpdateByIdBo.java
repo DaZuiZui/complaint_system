@@ -11,7 +11,9 @@ import java.io.Serializable;
 public class TaskUpdateByIdBo implements Serializable {
     private String token;
     private Task Task; //投诉内容
+    public TaskUpdateByIdBo(){
 
+    }
     @Override
     public String toString() {
         return "TaskUpdateByIdBo{" +

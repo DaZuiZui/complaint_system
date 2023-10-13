@@ -41,4 +41,7 @@ public interface TaskService {
      * @return
      */
     public ResponseVo taskUpdateById(TaskUpdateByIdBo taskUpdateByIdBo);
+
+
+    public ResponseVo taskSelectAll();
 }

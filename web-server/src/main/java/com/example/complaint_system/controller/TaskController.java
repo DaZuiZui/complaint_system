@@ -34,6 +34,8 @@ public class TaskController {
         return JSONArray.toJSONString(taskService.taskSelectById(taskSelectByIdBo));
     }
 
+
+
     /**
      * @author zhuxinyu 2023-10-12
      *        添加数据
@@ -69,4 +71,20 @@ public class TaskController {
     public String taskUpdateById(@RequestBody TaskUpdateByIdBo taskUpdateByIdBo){
         return JSONArray.toJSONString(taskService.taskUpdateById(taskUpdateByIdBo));
     }
+
+
+    /**
+     * @author zhuxinyu 2023-10-13
+     *      查询所有数据
+     * @param
+     * @return
+     */
+    @PostMapping("/selectall")
+    @ApiOperation("查询所有数据")
+    public String taskSelect(){
+        return JSONArray.toJSONString(taskService.taskSelectAll());
+    }
+
+
+
 }
