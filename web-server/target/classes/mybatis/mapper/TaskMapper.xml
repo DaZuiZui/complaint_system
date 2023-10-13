@@ -19,6 +19,13 @@
         limit 1
     </select>
 
+    <!-- 查询所有投诉信息 -->
+    <select id="taskSelectAll" resultType="com.example.complaint_system.domain.bo.TaskAndUserBo">
+        select task.context, user.username , task.create_by, user.create_by from  task
+            inner join  user
+                on task.create_by = user.create_by
+    </select>
+
     <!--
          @auther zhuxinyu 2023-10-12
          增加Task数据

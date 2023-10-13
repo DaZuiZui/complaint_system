@@ -1,8 +1,10 @@
 package com.example.complaint_system.mapper;
 
 import com.example.complaint_system.domain.Task;
-import com.example.complaint_system.domain.bo.TaskAddByIdBo;
+import com.example.complaint_system.domain.bo.TaskAndUserBo;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
 
 /**
  * @author zhuxinyu 2023-10-12
@@ -43,4 +45,11 @@ public interface TaskMapper {
      * @return
      */
     public Long updateByIdTask(Task task);
+
+    /**
+     * @return
+     * @author hln 2023-10-13
+     * 查询所有投诉信息
+     */
+    public List<TaskAndUserBo> taskSelectAll();
 }

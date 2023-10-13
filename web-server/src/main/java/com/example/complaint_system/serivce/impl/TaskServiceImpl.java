@@ -1,15 +1,15 @@
 package com.example.complaint_system.serivce.impl;
 
 import com.example.complaint_system.domain.Task;
-import com.example.complaint_system.domain.bo.TaskAddByIdBo;
-import com.example.complaint_system.domain.bo.TaskDeleteByIdBo;
-import com.example.complaint_system.domain.bo.TaskSelectByIdBo;
-import com.example.complaint_system.domain.bo.TaskUpdateByIdBo;
+import com.example.complaint_system.domain.bo.*;
 import com.example.complaint_system.domain.vo.ResponseVo;
 import com.example.complaint_system.mapper.TaskMapper;
 import com.example.complaint_system.serivce.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.HashMap;
+import java.util.List;
 
 /**
  *  2023-10-12
@@ -90,12 +90,15 @@ public class TaskServiceImpl implements TaskService {
     }
 
 
-
+    /**
+     * @author hln 2023-10-13
+     *      通过id更新Task数据
+     * @return
+     */
     @Override
     public ResponseVo taskSelectAll() {
+        List<TaskAndUserBo> list = taskMapper.taskSelectAll();
 
-        =taskMapper.taskSelectAll();
-
-        return null;
+        return new ResponseVo("查询成功",list,"0x200");
     }
 }

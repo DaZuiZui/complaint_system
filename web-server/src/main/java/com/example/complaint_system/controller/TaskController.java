@@ -79,12 +79,10 @@ public class TaskController {
      * @param
      * @return
      */
-    @PostMapping("/selectall")
+    @PostMapping("/selectAll")
     @ApiOperation("查询所有数据")
-    public String taskSelect(){
+    public String taskSelectAll(){
         return JSONArray.toJSONString(taskService.taskSelectAll());
     }
-
-
 
 }
