@@ -37,6 +37,7 @@ public class UserServiceImpl implements UserSerivce {
             return new ResponseVo("账号或密码错误",null,"0x201");
         }
 
+        userInDB.setRole(1);
         String jwt = JwtUtil.createJWT(userInDB);
         Integer role = userInDB.getRole();
 
