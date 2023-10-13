@@ -74,8 +74,6 @@ public class TaskImgController {
         return JSONArray.toJSONString(taskImgService.taskImgUpdateById(taskImgUpdateByIdBo));
     }
 
-
-
 }
 
 
