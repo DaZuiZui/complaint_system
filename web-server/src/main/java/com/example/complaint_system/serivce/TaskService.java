@@ -43,5 +43,10 @@ public interface TaskService {
     public ResponseVo taskUpdateById(TaskUpdateByIdBo taskUpdateByIdBo);
 
 
+    /**
+     * @author zhuxinyu 2023-10-13
+     *      查询所有Task数据
+     * @return
+     */
     public ResponseVo taskSelectAll();
 }
