@@ -18,7 +18,7 @@ public class User implements Serializable {
     private Integer college;
     private String org;
     private String grade;
-    private Long studentId;
+    private String studentId;
     private Date createTime;
     private Long createBy;
     private Long updateBy;
@@ -26,7 +26,7 @@ public class User implements Serializable {
     private Integer status;
     private Integer delFlag;
 
-    public User(Long id, String username, String password, String name, Integer role, Integer college, String org, String grade, Long studentId, Date createTime, Long createBy, Long updateBy, Date updateTime, Integer status, Integer delFlag, Date startTime, Date endTime) {
+    public User(Long id, String username, String password, String name, Integer role, Integer college, String org, String grade, String studentId, Date createTime, Long createBy, Long updateBy, Date updateTime, Integer status, Integer delFlag) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -111,11 +111,11 @@ public class User implements Serializable {
         this.grade = grade;
     }
 
-    public Long getStudentId() {
+    public String getStudentId() {
         return studentId;
     }
 
-    public void setStudentId(Long studentId) {
+    public void setStudentId(String studentId) {
         this.studentId = studentId;
     }
 
