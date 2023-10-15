@@ -53,7 +53,7 @@ public class TaskServiceImpl implements TaskService {
         if (aLong.longValue() == 0) {
             return new ResponseVo("增加失败",  null, "0x500");
         }
-        return new ResponseVo("增加成功", null, "0x200");
+        return new ResponseVo("增加成功", taskAddByIdBo.getTask().getId(), "0x200");
     }
 
     /**
