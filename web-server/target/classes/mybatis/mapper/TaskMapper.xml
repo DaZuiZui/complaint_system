@@ -21,9 +21,9 @@
 
     <!-- 查询所有投诉信息 -->
     <select id="taskSelectAll" resultType="com.example.complaint_system.domain.bo.TaskAndUserBo">
-        select task.context, user.username , task.id , task.create_time , task.update_time from task
-            inner join  user
-                on task.create_by = user.create_by
+        SELECT DISTINCT task.id, task.context, task.create_time, task.update_time, user.username
+        FROM task
+                 LEFT JOIN `user` ON task.create_by = user.create_by
     </select>
 
     <!--
