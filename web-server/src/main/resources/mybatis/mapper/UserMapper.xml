@@ -93,7 +93,7 @@
         insert into
             user
         values
-            (null,#{username},#{password},#{name},0,#{college},#{org},#{grade},#{studentId},#{createBy},#{createTime},#{updateBy},#{updateTime},0,0);
+            (null,#{username},#{password},#{name},1,#{college},#{org},#{grade},#{studentId},#{createBy},#{createTime},#{updateBy},#{updateTime},0,0);
     </insert>
 
     <!--
