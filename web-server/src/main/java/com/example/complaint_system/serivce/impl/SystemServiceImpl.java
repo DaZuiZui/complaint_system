@@ -4,6 +4,7 @@ import com.alibaba.fastjson2.JSONArray;
 import com.example.complaint_system.domain.vo.ResponseVo;
 import com.example.complaint_system.serivce.SystemService;
 import com.example.complaint_system.utils.JwtUtil;
+import com.example.complaint_system.utils.ThreadLocalUtil;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
@@ -28,6 +29,28 @@ public class SystemServiceImpl implements SystemService {
     private String path;
     @Value("${projecturl}")
     private String projecturl;
+
+    /**
+     * 鉴权
+     * @param token
+     * @return
+     */
+    @Override
+    public ResponseVo auth(String token) {
+        try {
+            Map<String, Object> map = JwtUtil.analysis(token);
+//            String id = (String) analysis.get("id");
+//            Long userId = Long.valueOf(id);
+//            User user = userMapper.findById(userId);
+            ThreadLocalUtil.mapThreadLocalOfJWT.get().put("userinfo",map);
+            return new ResponseVo(null,map,"0x200");
+        } catch (Exception e) {
+            //e.printStackTrace();
+            ThreadLocalUtil.mapThreadLocal.get().put("error","身份验证过期");
+            ThreadLocalUtil.mapThreadLocal.get().put("code", "0x600");
+            return new ResponseVo("身份登入验证过期",null,"0x203");
+        }
+    }
 
     /**
      * @author bryan yang 2023 10-12

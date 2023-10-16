@@ -1,5 +1,6 @@
 package com.example.complaint_system.serivce;
 
+import com.example.complaint_system.domain.vo.ResponseVo;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,13 @@ import java.io.IOException;
  */
 @Service
 public interface SystemService {
+    /**
+     * 鉴权
+     * @param token
+     * @return
+     */
+    public ResponseVo auth(String token);
+
     /**
      * @author bryan yang 2023 10-12
      * 幂等性处理

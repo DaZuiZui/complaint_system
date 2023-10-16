@@ -5,10 +5,11 @@ import com.example.complaint_system.domain.bo.*;
 import com.example.complaint_system.domain.vo.ResponseVo;
 import com.example.complaint_system.mapper.TaskMapper;
 import com.example.complaint_system.serivce.TaskService;
+import com.example.complaint_system.utils.ThreadLocalUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -47,12 +48,17 @@ public class TaskServiceImpl implements TaskService {
      * @return
      */
     @Override
-    public ResponseVo taskAdd(TaskAddByIdBo taskAddByIdBo){
+    public ResponseVo taskAdd(TaskAddBo taskAddByIdBo){
+        String userIdOfStr = (String) ThreadLocalUtil.mapThreadLocalOfJWT.get().get("userinfo").get("id");
+        Long userId = Long.valueOf(userIdOfStr);
+        taskAddByIdBo.getTask().setCreateBy(userId);
+        taskAddByIdBo.getTask().setCreateTime(new Date());
 
         Long  aLong = taskMapper.addTask(taskAddByIdBo.getTask());
         if (aLong.longValue() == 0) {
             return new ResponseVo("增加失败",  null, "0x500");
         }
+
         return new ResponseVo("增加成功", taskAddByIdBo.getTask().getId(), "0x200");
     }
 

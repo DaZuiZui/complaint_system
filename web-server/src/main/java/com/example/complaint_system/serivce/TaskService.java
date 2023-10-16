@@ -1,6 +1,6 @@
 package com.example.complaint_system.serivce;
 
-import com.example.complaint_system.domain.bo.TaskAddByIdBo;
+import com.example.complaint_system.domain.bo.TaskAddBo;
 import com.example.complaint_system.domain.bo.TaskDeleteByIdBo;
 import com.example.complaint_system.domain.bo.TaskSelectByIdBo;
 import com.example.complaint_system.domain.bo.TaskUpdateByIdBo;
@@ -24,7 +24,7 @@ public interface TaskService {
      * @param taskAddByIdBo
      * @return
      */
-    public ResponseVo taskAdd(TaskAddByIdBo taskAddByIdBo);
+    public ResponseVo taskAdd(TaskAddBo taskAddByIdBo);
 
     /**
      * @author zhuxinyu 2023-10-12

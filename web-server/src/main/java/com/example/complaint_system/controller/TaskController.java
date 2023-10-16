@@ -1,7 +1,7 @@
 package com.example.complaint_system.controller;
 
 import com.alibaba.fastjson2.JSONArray;
-import com.example.complaint_system.domain.bo.TaskAddByIdBo;
+import com.example.complaint_system.domain.bo.TaskAddBo;
 import com.example.complaint_system.domain.bo.TaskDeleteByIdBo;
 import com.example.complaint_system.domain.bo.TaskSelectByIdBo;
 import com.example.complaint_system.domain.bo.TaskUpdateByIdBo;
@@ -44,7 +44,7 @@ public class TaskController {
      */
     @PostMapping("/add")
     @ApiOperation("通过id添加task数据")
-    public String taskAdd(@RequestBody TaskAddByIdBo taskAddByIdBo){
+    public String taskAdd(@RequestBody TaskAddBo taskAddByIdBo){
         return JSONArray.toJSONString(taskService.taskAdd(taskAddByIdBo));
     }
 
