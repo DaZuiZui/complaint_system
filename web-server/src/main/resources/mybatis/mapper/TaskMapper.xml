@@ -27,6 +27,16 @@
         FROM task
                  LEFT JOIN `user` ON task.create_by = user.create_by
     </select>
+    <select id="getTaskByUserId" resultType="com.example.complaint_system.domain.Task">
+        SELECT
+            *
+        FROM
+            task
+        WHERE
+            org = ( SELECT org FROM `user` WHERE id = 14 )
+          AND NOW() >= start_time
+          AND NOW() &lt; end_time
+    </select>
 
     <!--
          @auther zhuxinyu 2023-10-12

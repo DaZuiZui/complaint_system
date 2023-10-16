@@ -51,15 +51,13 @@ public class TaskServiceImpl implements TaskService {
     public ResponseVo taskAdd(TaskAddBo taskAddByIdBo){
         String userIdOfStr = (String) ThreadLocalUtil.mapThreadLocalOfJWT.get().get("userinfo").get("id");
         Long userId = Long.valueOf(userIdOfStr);
-        taskAddByIdBo.getTask().setCreateBy(userId);
-        taskAddByIdBo.getTask().setCreateTime(new Date());
-
         Long  aLong = taskMapper.addTask(taskAddByIdBo.getTask());
+        List<Task> taskByUserId = taskMapper.getTaskByUserId(userId);
         if (aLong.longValue() == 0) {
             return new ResponseVo("增加失败",  null, "0x500");
         }
 
-        return new ResponseVo("增加成功", taskAddByIdBo.getTask().getId(), "0x200");
+        return new ResponseVo("增加成功", taskByUserId, "0x200");
     }
 
     /**
