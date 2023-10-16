@@ -43,8 +43,8 @@ export default {
     methods:{
         isAdmin(){
             let role =JSON.parse(localStorage.getItem('role'))
-            if (role == 1) {
-                this.isAdmin =true
+            if (role == 2) {
+                this.Admin =true
             }
         }
     },
@@ -61,14 +61,17 @@ export default {
 }
 .left{
     height: 90%;
-    width: 30%;
+    width: 15%;
 }
 .rigth{
     height: 90%;
-    width: 70%;
+    width: 85%;
 
 }
 .tab{
     margin: 30px;
+}
+a{
+    color: black;
 }
 </style>
