@@ -4,7 +4,6 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.complaint_system.mapper.TaskMapper">
 
-
     <!--
          @auther zhuxinyu 2023-10-12
          根据id查询Task
@@ -19,7 +18,10 @@
         limit 1
     </select>
 
-    <!-- 查询所有投诉信息 -->
+    <!--
+        @author Bryan yang
+        查询所有投诉信息
+     -->
     <select id="taskSelectAll" resultType="com.example.complaint_system.domain.bo.TaskAndUserBo">
         SELECT DISTINCT task.id, task.context, task.create_time, task.update_time, user.username
         FROM task

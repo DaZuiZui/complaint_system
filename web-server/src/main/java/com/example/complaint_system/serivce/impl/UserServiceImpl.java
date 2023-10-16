@@ -40,8 +40,8 @@ public class UserServiceImpl implements UserSerivce {
         String jwt = JwtUtil.createJWT(userInDB);
         Integer role = userInDB.getRole();
 
-        //登录时权限变为1
-        userInDB.setRole(1);
+        //登录时权限变为用户角色
+        userInDB.setRole(0);
 
         HashMap<String,Object> map = new HashMap<>();
         map.put("jwt",jwt);
