@@ -3,21 +3,20 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.complaint_system.mapper.TaskImgMapper">
-
-
     <!--
          @auther Oh… Yeah!!! 2023-10-11
-         根据id查询TaskImg
+         根据partId查询TaskImg
     -->
-    <select id="selectByIdTaskImg" resultType="com.example.complaint_system.domain.TaskImg">
+    <select id="selectByPartIdTaskImg" resultType="com.example.complaint_system.domain.TaskImg"
+            parameterType="java.lang.Long">
         select
-                *
+            *
         from
-              task_img
+            task_img
         where
-            id = #{id}
-        limit 1
+            part_id = #{partId}
     </select>
+
 
     <!--
          @auther Oh… Yeah!!! 2023-10-11
@@ -36,8 +35,11 @@
          @auther Oh… Yeah!!! 2023-10-12
          删除TaskImg数据
     -->
-    <delete id="deleteByIdTaskImg">
-        delete from task_img where id = #{id}
+    <delete id="deleteByPartIdTaskImg" parameterType="java.lang.Long">
+        delete from
+                task_img
+        where
+                part_id = #{partId}
     </delete>
 
     <!--

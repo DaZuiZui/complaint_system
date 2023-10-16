@@ -6,17 +6,17 @@ import java.io.Serializable;
  *  2023-10-12
  *  通过id删除task
  */
-public class TaskImgDeleteByIdBo implements Serializable {
+public class TaskImgDeleteByPartIdBo implements Serializable {
 
     private String token;
-    private Long id;
+    private Long partId;
 
-    public TaskImgDeleteByIdBo() {
+    public TaskImgDeleteByPartIdBo() {
     }
 
-    public TaskImgDeleteByIdBo(String token, Long id) {
+    public TaskImgDeleteByPartIdBo(String token, Long partId) {
         this.token = token;
-        this.id = id;
+        this.partId = partId;
     }
 
     public String getToken() {
@@ -27,19 +27,19 @@ public class TaskImgDeleteByIdBo implements Serializable {
         this.token = token;
     }
 
-    public Long getId() {
-        return id;
+    public Long getPartId() {
+        return partId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setPartId(Long partId) {
+        this.partId = partId;
     }
 
     @Override
     public String toString() {
-        return "TaskImgDeleteByIdBo{" +
+        return "TaskImgDeleteByPartIdBo{" +
                 "token='" + token + '\'' +
-                ", id=" + id +
+                ", partId=" + partId +
                 '}';
     }
 }

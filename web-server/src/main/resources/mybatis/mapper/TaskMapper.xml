@@ -27,15 +27,14 @@
         FROM task
                  LEFT JOIN `user` ON task.create_by = user.create_by
     </select>
+
     <select id="getTaskByUserId" resultType="com.example.complaint_system.domain.Task">
         SELECT
             *
         FROM
             task
         WHERE
-            org = ( SELECT org FROM `user` WHERE id = 14 )
-          AND NOW() >= start_time
-          AND NOW() &lt; end_time
+            create_by = #{createBy}
     </select>
 
     <!--
@@ -51,6 +50,15 @@
              #{updateTime},#{status},
              #{delFlag})
     </insert>
+
+
+    <select id="taskSelectNow" resultType="java.lang.Long">
+        select
+            max(id)
+        from
+            task;
+    </select>
+
 
     <!--
         @auther zhuxinyu 2023-10-12
@@ -92,5 +100,7 @@
         where
             id = #{id}
     </update>
+
+
 </mapper>
     

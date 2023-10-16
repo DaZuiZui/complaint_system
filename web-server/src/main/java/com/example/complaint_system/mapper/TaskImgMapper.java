@@ -4,6 +4,8 @@ import com.example.complaint_system.domain.TaskImg;
 import com.example.complaint_system.domain.bo.TaskImgAddByBo;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 /**
  *  2023-10-12
  *  投诉图片持久层
@@ -14,10 +16,10 @@ public interface TaskImgMapper {
     /**
      * @auther Oh… Yeah!!! 2023-10-11
      *      根据id查询数据.
-     * @param id
+     * @param partId
      * @return TaskImg
      */
-    public TaskImg selectByIdTaskImg(Long id);
+    public TaskImg selectByPartIdTaskImg(Long partId);
 
     /**
      * @auther Oh… Yeah!!! 2023-10-11
@@ -30,10 +32,12 @@ public interface TaskImgMapper {
     /**
      * @auther Oh… Yeah!!! 2023-10-11
      *      通过id删除TaskImg数据.
-     * @param id
+     * @param partId
      * @return Long
      */
-    public Long deleteByIdTaskImg(Long id);
+    public Long deleteByPartIdTaskImg(Long partId);
+
+
 
     /**
      * @author Oh… Yeah, 2023-9-12
@@ -42,4 +46,6 @@ public interface TaskImgMapper {
      * @return Long
      */
     public Long updateByIdTaskImg(TaskImg taskImg);
+
+
 }

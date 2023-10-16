@@ -1,5 +1,6 @@
 package com.example.complaint_system.domain;
 
+import com.baomidou.mybatisplus.annotation.Version;
 import javafx.scene.text.Text;
 
 import java.io.Serializable;

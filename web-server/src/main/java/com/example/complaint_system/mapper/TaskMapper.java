@@ -55,4 +55,7 @@ public interface TaskMapper {
     public List<TaskAndUserBo> taskSelectAll();
 
     public List<Task> getTaskByUserId(@Param("userId")Long userId);
+
+
+    public Long taskSelectNow();
 }

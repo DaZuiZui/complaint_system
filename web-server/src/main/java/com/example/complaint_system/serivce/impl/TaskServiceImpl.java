@@ -49,15 +49,17 @@ public class TaskServiceImpl implements TaskService {
      */
     @Override
     public ResponseVo taskAdd(TaskAddBo taskAddByIdBo){
-        String userIdOfStr = (String) ThreadLocalUtil.mapThreadLocalOfJWT.get().get("userinfo").get("id");
-        Long userId = Long.valueOf(userIdOfStr);
+
         Long  aLong = taskMapper.addTask(taskAddByIdBo.getTask());
-        List<Task> taskByUserId = taskMapper.getTaskByUserId(userId);
+
+
         if (aLong.longValue() == 0) {
             return new ResponseVo("增加失败",  null, "0x500");
         }
 
-        return new ResponseVo("增加成功", taskByUserId, "0x200");
+        Long id = taskMapper.taskSelectNow();
+
+        return new ResponseVo("增加成功", id, "0x200");
     }
 
     /**
@@ -69,11 +71,13 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public ResponseVo taskDeleteById(TaskDeleteByIdBo taskDeleteByIdBo){
 
-        Long  numbersOfOpetion= taskMapper.deleteByIdTask(taskDeleteByIdBo.getId());
+        Long id = taskDeleteByIdBo.getId();
+
+        Long  numbersOfOpetion= taskMapper.deleteByIdTask(id);
         if (numbersOfOpetion.longValue() == 0L) {
             return new ResponseVo("删除失败", null, "0x500");
         }
-        return new ResponseVo("删除成功",null, "0x200");
+        return new ResponseVo("删除成功",id, "0x200");
     }
 
     /**
@@ -90,7 +94,7 @@ public class TaskServiceImpl implements TaskService {
         if (numberOfOpertion.longValue() == 0L) {
             return new ResponseVo("更新失败", null, "0x500");
         }
-        return new ResponseVo("更新成功", null, "0x200");
+        return new ResponseVo("更新成功", task.getId(), "0x200");
     }
 
 
