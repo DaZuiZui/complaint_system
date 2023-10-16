@@ -3,6 +3,7 @@ package com.example.complaint_system.mapper;
 import com.example.complaint_system.domain.Task;
 import com.example.complaint_system.domain.bo.TaskAndUserBo;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -52,4 +53,6 @@ public interface TaskMapper {
      * 查询所有投诉信息
      */
     public List<TaskAndUserBo> taskSelectAll();
+
+    public List<Task> getTaskByUserId(@Param("userId")Long userId);
 }
