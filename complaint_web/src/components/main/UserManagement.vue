@@ -21,23 +21,47 @@
               <td>{{ obj.password }}</td>
               <td>{{ obj.studentId }}</td>
               <td>
-                <el-link type="primary"  @click="openView(obj)">查看</el-link>
+                <el-link type="primary" @click="openView(obj)">查看</el-link>
 
-                <el-link type="primary"  @click="openUpdateUserInfoWindows(obj.id)">修改</el-link>
+                <el-link type="primary" @click="openUpdateUserInfoWindows(obj.id)">修改</el-link>
 
                 <el-drawer title="我是标题" :visible.sync="updateWindows" :with-header="false">
                   <div>
-                    名字:
+                    <div>
+                      名字:
                       <el-input v-model="userInfo.name" placeholder="更改名字"></el-input>
-                    <br>
-                    用户名:
+                    </div>
+                    <br><br>
+                    <div>
+                      用户名:
                       <el-input v-model="userInfo.username" placeholder="更改用户名"></el-input>
-                    <br>
-                    密码:
+                    </div>
+                    <br><br>
+                    <div>
+                      密码:
                       <el-input v-model="userInfo.password" placeholder="更改密码"></el-input>
-                    <br>
-                    
-                    
+                    </div>
+                    <br><br>
+                    <div>
+                      班级:
+                      <el-input v-model="userInfo.org" placeholder="更改班级"></el-input>
+                    </div> <br><br>
+                    <div>
+                      学院:
+                      <el-select v-model="input" placeholder="请选择">
+                                    <el-option v-for="item in college" :key="item.value" :label="item.text"
+                                        :value="item.value">
+                                    </el-option>
+                                </el-select>
+                    </div> <br><br>
+                    <div>
+                      年级:
+                      <el-input v-model="userInfo.grade" placeholder="更改年级"></el-input>
+                    </div> <br><br>
+                    <div>
+                      学号:
+                      <el-input v-model="userInfo.studentId" placeholder="更改学号"></el-input>
+                    </div> <br><br>
                     <el-button type="primary" @click="updateUserInfo()">提交</el-button>
                   </div>
                 </el-drawer>
@@ -55,9 +79,9 @@
         </el-pagination>
       </div>
     </section>
-    
+
     <!-- View content  -->
-    <section v-else>
+    <section v-else class="check">
       <!-- 用户名 -->
       <div>
         <div class="key">
@@ -79,34 +103,34 @@
       </div>
 
       <!-- 名字 -->
-        <div v-if="schoolView.name">
-          <div class="key">
-            名字
-          </div>
-          <div class="value">
-            {{ schoolView.name }}
-          </div>
+      <div v-if="schoolView.name">
+        <div class="key">
+          名字
         </div>
+        <div class="value">
+          {{ schoolView.name }}
+        </div>
+      </div>
 
-      <!-- 大学 -->
+      <!-- 班级 -->
       <div v-if="schoolView.org">
-          <div class="key">
-            班级
-          </div>
-          <div class="value">
-            {{ schoolView.org }}
-          </div>
+        <div class="key">
+          班级
+        </div>
+        <div class="value">
+          {{ schoolView.org }}
+        </div>
       </div>
 
       <!-- 学院 -->
-        <div v-if="schoolView.college">
+      <div v-if="schoolView.college">
         <div class="key">
-            学院
+          学院
         </div>
-          <div class="value">
-            {{ schoolView.college }}
-          </div>
+        <div class="value">
+          {{ schoolView.college }}
         </div>
+      </div>
 
 
       <!-- 年级 -->
@@ -115,23 +139,30 @@
           年级
         </div>
         <div class="value">
-          {{ schoolView.grade}}
+          {{ schoolView.grade }}
         </div>
       </div>
 
       <!-- 学号 -->
-        <div v-if="schoolView.student_id">
-          <div class="key">
-            学号
-          </div>
-          <div class="value">
-            {{ schoolView.student_id }}
-          </div>
+      <div v-if="schoolView.student_id">
+        <div class="key">
+          学号
         </div>
+        <div class="value">
+          {{ schoolView.student_id }}
+        </div>
+      </div>
 
-       
+      <div>
+        <div class="key">
+          <el-link type="primary" @click="openUpdateUserInfoWindows(schoolView.id)">修改</el-link>
+        </div>
+        <div class="value">
+          <el-link type="success" @click="deleteById(schoolView.id)">删除</el-link>
+        </div>
+      </div>
 
-    
+
     </section>
 
   </div>
@@ -144,14 +175,13 @@ import { synRequestPost, synRequestGet } from "../../../static/request"
 export default {
   data() {
     return {
-      //是否为查看
       user: {
         username: "",
         password: "",
       },
       //查看学院
       schoolView: {
-        
+
       },
       //按钮开关
       switchbutton: false,
@@ -189,19 +219,28 @@ export default {
         username: "",
         password: "",
         name: "",
+        org:'',
+        college:'',
+        grade:'',
+        studentId:'',
       },
       //更新用户信息
       updataByIdBo: {
         token: "",
         user: {
-          username: "",
-          password: "",
-          name: "",
           id: -1,
+          username: "",
+        password: "",
+        name: "",
+        org:'',
+        college:'',
+        grade:'',
+        studentId:'',
         }
       },
       //查看
       view: true,
+      input:'',
       //学院信息
       college: [
         {
@@ -234,10 +273,16 @@ export default {
      */
     async updateUserInfo() {
       //todo userInfo 要求username 和password 和name 不可以为空
+
+      this.updataByIdBo.user.college = this.input;
+      this.updataByIdBo.user.org = this.userInfo.org;
+      this.updataByIdBo.user.grade = this.userInfo.grade;
+      this.updataByIdBo.user.studentId = this.userInfo.studentId;
       this.updataByIdBo.user.password = this.userInfo.password;
       this.updataByIdBo.user.username = this.userInfo.username;
       this.updataByIdBo.user.name = this.userInfo.name;
       this.updataByIdBo.user.id = this.userInfo.id;
+      console.log(this.updataByIdBo);
       let obj = await synRequestPost("/user/updata", this.updataByIdBo);
       alert(obj.message);
       this.updateWindows = false
@@ -249,6 +294,9 @@ export default {
       this.selectByIdBo.id = id;
       let obj = await synRequestPost("/user/selectById", this.selectByIdBo);
       this.userInfo = obj.data;
+      // this.userInfo.college = this.college[this.userInfo.college]
+      console.log(this.userInfo);
+      this.view = true
       this.updateWindows = true;
     },
 
@@ -274,10 +322,10 @@ export default {
     //查看功能
     openView(obj) {
       this.view = false
-      // console.log(obj.college);
-      // console.log(this.college[obj.college]);
-      // obj.college = this.college[obj.college].text
-      // console.log(obj.college);
+      console.log(obj);
+      if (obj.college) {
+        obj.college = this.college[obj.college].text
+      }
       this.schoolView = obj
     }
 
@@ -309,6 +357,20 @@ a {
   color: #42b983;
 }
 
+.check div {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
 
+.key {
+  margin: 15px;
+  font-size: 22px;
+}
+
+.value {
+  margin: 15px;
+  font-size: 20px;
+}
 </style>
     
