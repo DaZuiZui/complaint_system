@@ -5,11 +5,16 @@ import com.example.complaint_system.domain.bo.TaskAddBo;
 import com.example.complaint_system.domain.bo.TaskDeleteByIdBo;
 import com.example.complaint_system.domain.bo.TaskSelectByIdBo;
 import com.example.complaint_system.domain.bo.TaskUpdateByIdBo;
+import com.example.complaint_system.domain.vo.ResponseVo;
 import com.example.complaint_system.serivce.TaskService;
+import com.example.complaint_system.utils.ThreadLocalUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
+
 /**
  * @author zhuxinyu 2023-10-12
  *  投诉内容板块接口
@@ -45,6 +50,13 @@ public class TaskController {
     @PostMapping("/add")
     @ApiOperation("通过id添加task数据")
     public String taskAdd(@RequestBody TaskAddBo taskAddByIdBo){
+        Map<String, String> map = ThreadLocalUtil.mapThreadLocal.get();
+        ThreadLocalUtil.mapThreadLocal.remove();
+        if ( map.get("error") != null) {
+            return JSONArray.toJSONString(new ResponseVo<>(map.get("error"),null,map.get("code")));
+        }
+
+
         return JSONArray.toJSONString(taskService.taskAdd(taskAddByIdBo));
     }
 
