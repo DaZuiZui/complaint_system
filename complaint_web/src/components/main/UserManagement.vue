@@ -175,6 +175,7 @@ import { synRequestPost, synRequestGet } from "../../../static/request"
 export default {
   data() {
     return {
+      token: getCookie("token"),
       user: {
         username: "",
         password: "",
@@ -273,7 +274,7 @@ export default {
      */
     async updateUserInfo() {
       //todo userInfo 要求username 和password 和name 不可以为空
-
+      this.updataByIdBo.token = this.token;
       this.updataByIdBo.user.college = this.input;
       this.updataByIdBo.user.org = this.userInfo.org;
       this.updataByIdBo.user.grade = this.userInfo.grade;
@@ -292,6 +293,7 @@ export default {
     //更新用户信息
     async openUpdateUserInfoWindows(id) {
       this.selectByIdBo.id = id;
+      this.selectByIdBo.token = this.token;
       let obj = await synRequestPost("/user/selectById", this.selectByIdBo);
       this.userInfo = obj.data;
       // this.userInfo.college = this.college[this.userInfo.college]
@@ -314,6 +316,7 @@ export default {
     //删除用户通过id
     async deleteById(id) {
       this.deleteByIdBo.id = id;
+      this.deleteByIdBo.token = this.token;
       let obj = await synRequestPost("/user/delete", this.deleteByIdBo);
       alert(obj.message);
       this.getMerchantInformation(1);
