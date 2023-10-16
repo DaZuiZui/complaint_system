@@ -17,7 +17,7 @@ public class TaskControllerAopImpl implements TaskControllerAop {
     private SystemService systemService;
 
     /**
-     * 添加task
+     * 添加task 主要做了鉴权
      * @param joinPoint
      * @return
      */
