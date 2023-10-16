@@ -4,7 +4,6 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.complaint_system.mapper.TaskMapper">
 
-
     <!--
          @auther zhuxinyu 2023-10-12
          根据id查询Task
@@ -15,15 +14,31 @@
         from
             task
         where
-            id = #{id}
+            create_by = #{id}
         limit 1
     </select>
 
-    <!-- 查询所有投诉信息 -->
+    <!--
+        @author Bryan yang
+        查询所有投诉信息
+     -->
     <select id="taskSelectAll" resultType="com.example.complaint_system.domain.bo.TaskAndUserBo">
         SELECT DISTINCT task.id, task.context, task.create_time, task.update_time, user.username
         FROM task
                  LEFT JOIN `user` ON task.create_by = user.create_by
+        limit 0,15;
+    </select>
+
+    <!-- 根据id查询数据 -->
+    <select id="getTaskByUserId" resultType="com.example.complaint_system.domain.Task">
+        SELECT
+            *
+        FROM
+            task
+        WHERE
+            org = ( SELECT org FROM `user` WHERE id = 14 )
+          AND NOW() >= start_time
+          AND NOW() &lt; end_time
     </select>
 
     <!--
