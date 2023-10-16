@@ -36,10 +36,14 @@ public class TaskController {
     @PostMapping("/select")
     @ApiOperation("根据id查询Task数据")
     public String taskSelectById(@RequestBody TaskSelectByIdBo taskSelectByIdBo){
+        Map<String, String> map = ThreadLocalUtil.mapThreadLocal.get();
+        ThreadLocalUtil.mapThreadLocal.remove();
+        if ( map.get("error") != null) {
+            return JSONArray.toJSONString(new ResponseVo<>(map.get("error"),null,map.get("code")));
+        }
+
         return JSONArray.toJSONString(taskService.taskSelectById(taskSelectByIdBo));
     }
-
-
 
     /**
      * @author zhuxinyu 2023-10-12
@@ -55,7 +59,6 @@ public class TaskController {
         if ( map.get("error") != null) {
             return JSONArray.toJSONString(new ResponseVo<>(map.get("error"),null,map.get("code")));
         }
-
 
         return JSONArray.toJSONString(taskService.taskAdd(taskAddByIdBo));
     }
