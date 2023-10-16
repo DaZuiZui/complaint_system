@@ -43,6 +43,7 @@ public class SystemServiceImpl implements SystemService {
 //            Long userId = Long.valueOf(id);
 //            User user = userMapper.findById(userId);
             ThreadLocalUtil.mapThreadLocalOfJWT.get().put("userinfo",map);
+            System.out.println(ThreadLocalUtil.mapThreadLocalOfJWT);
             return new ResponseVo(null,map,"0x200");
         } catch (Exception e) {
             //e.printStackTrace();

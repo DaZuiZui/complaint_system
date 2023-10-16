@@ -1,5 +1,7 @@
 package com.example.complaint_system.domain.bo;
 
+import com.example.complaint_system.domain.Task;
+
 import java.io.Serializable;
 /**
  *    @author zhuxinyu 2023-10-12
@@ -9,12 +11,12 @@ public class TaskSelectByIdBo implements Serializable {
     private String token;
     private Long id;
 
-    public TaskSelectByIdBo(){
-
-    }
     public TaskSelectByIdBo(String token, Long id) {
         this.token = token;
         this.id = id;
+    }
+
+    public TaskSelectByIdBo() {
     }
 
     public String getToken() {

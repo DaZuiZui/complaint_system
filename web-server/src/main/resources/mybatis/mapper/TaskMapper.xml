@@ -14,7 +14,7 @@
         from
             task
         where
-            id = #{id}
+            create_by = #{id}
         limit 1
     </select>
 

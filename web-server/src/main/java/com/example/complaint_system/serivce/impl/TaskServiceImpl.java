@@ -31,10 +31,11 @@ public class TaskServiceImpl implements TaskService {
      */
     @Override
     public ResponseVo taskSelectById(TaskSelectByIdBo taskSelectByIdBo){
-
+        String taskIdOfStr = (String) ThreadLocalUtil.mapThreadLocalOfJWT.get().get("userinfo").get("id");
+        Long taskId = Long.valueOf(taskIdOfStr);
         Task task = taskMapper.selectByIdTask(taskSelectByIdBo.getId());
 
-        if (task == null) {
+        if (task == null || taskSelectByIdBo.getId() != taskId) {
             return new ResponseVo("查询的数据不存在,", null, "0x500");
         }
 
