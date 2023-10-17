@@ -154,7 +154,7 @@ export default {
                 return
             }
             if (this.user.name.length < 1) {
-                alert("真实姓名长度小于3,请重新输入!")
+                alert("真实姓名长度小于1,请重新输入!")
                 this.user.name = ""
                 return
             }

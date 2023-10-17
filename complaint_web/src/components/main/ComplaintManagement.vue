@@ -1,6 +1,8 @@
 <template>
     <section v-if="isCheck">
 
+        <el-button type="primary" @click="isCheck = false">返回</el-button>
+
     </section>
     <!-- Main content -->
     <section v-else>
@@ -51,14 +53,19 @@
                     投诉信息
                     <el-input v-model="taskAddByIdBo.task.context" placeholder="输入想要投诉的信息"></el-input>
                     <br>
-                    <el-upload class="upload-demo" ref="upload" action="http://localhost:8001/system/imgUpDown"
-                        :on-preview="handlePreview" :on-remove="handleRemove" :file-list="fileList" :auto-upload="false">
-                        <el-button slot="trigger" size="small" type="primary">选取文件</el-button>
-
-                        <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
+                    <el-upload class="upload-demo" ref="upload" action="#" :auto-upload="false" drag :http-request="addTask"
+                        :limit='1'>
+                        <i class="el-icon-upload"></i>
+                        <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
+                        <div class="el-upload__tip" slot="tip">
+                            只能上传jpg/png文件，且不超过500kb
+                        </div>
                     </el-upload>
                     <br>
-                    <el-button style="margin-left: 10px;" size="small" type="success" @click="addTask()">上传到服务器</el-button>
+                    <span slot="footer" class="dialog-footer">
+                        <el-button @click="addWindows = false">取 消</el-button>
+                        <el-button type="primary" @click="addTask()">确 定</el-button>
+                    </span>
                     <!-- <el-button type="primary" @click="addTask()">提交</el-button> -->
                 </div>
             </el-drawer>
@@ -77,6 +84,9 @@ import { synRequestPost, synRequestGet } from "../../../static/request"
 export default {
     data() {
         return {
+            //图片
+            formData: new FormData,
+
             token: getCookie("token"),
             //添加投诉信息
             taskAddByIdBo: {
@@ -121,20 +131,30 @@ export default {
             //修改窗口
             updateWindows: false,
             addWindows: false,
-            //用户信息
+            //投诉信息
             taskInfo: {
                 id: -1,
                 context: ''
             },
+            // 查找投诉图片
             taskImgSelectByIdBo: {
                 token: '',
-                id: '',
+                partId: '',
             },
+            //修改投诉信息
             updataByIdBo: {
                 token: "",
                 task: {
                     context: '',
                     id: -1,
+                }
+            },
+            // 添加投诉图片
+            taskImgAddByBo: {
+                token: '',
+                taskImg: {
+                    imgUrl: '',
+                    partId: ''
                 }
             }
         }
@@ -143,15 +163,13 @@ export default {
         this.deleteByIdBo.token = getCookie("token");
         this.getMerchantInformation(1)
     },
-
     methods: {
         async check(obj) {
             this.isCheck = true
-            this.taskImgSelectByIdBo.id = obj.id;
+            this.taskImgSelectByIdBo.partId = obj.id;
             let res = await synRequestPost("/task_img/select", this.taskImgSelectByIdBo);
             console.log(res);
         },
-
         /**
          *  修改投诉信息
          */
@@ -180,7 +198,7 @@ export default {
         //跳转指定页面  
         async getMerchantInformation(val) {
             this.pagingToGetUserDataBo.start = (val - 1) * this.pagingToGetUserDataBo.size;
-            let obj = await synRequestPost("/task/selectAll", this.pagingToGetUserDataBo);
+            let obj = await synRequestPost("/task/selectall", this.pagingToGetUserDataBo);
             let role = JSON.parse(localStorage.getItem('role'))
             if (role == 2) {
                 this.Admin = true
@@ -194,7 +212,7 @@ export default {
         //删除用户通过id
         async deleteById(id) {
             this.deleteByIdBo.id = id;
-            this.deleteByIdBo.token = token;
+            this.deleteByIdBo.token = this.token;
             let obj = await synRequestPost("/task/delete", this.deleteByIdBo);
             alert(obj.message);
             this.getMerchantInformation(1);
@@ -208,12 +226,22 @@ export default {
             }
             this.taskAddByIdBo.token = this.token
             let obj = await synRequestPost("/task/add", this.taskAddByIdBo);
-            // console.log(obj);
-            // console.log(this.fileList);
-            // const formData = new FormData();
-            // formData.append('flie', this.fileList)
-            // formData.append('token', token)
-            // console.log(formData);
+            this.taskImgAddByBo.taskImg.partId = obj.data
+            const files = this.$refs.upload.uploadFiles;
+            // files.forEach(async (item, index) => {
+            // 遍历文件列表添加文件
+            this.formData.append("file", files[0].raw);
+            this.formData.append("token", this.token);
+            let uploadObj = await synRequestPost("/system/imgUpDown", this.formData);
+            this.taskImgAddByBo.taskImg.imgUrl = uploadObj.data
+            // });
+            // 这里是我请求额外携带的一个token参数
+            this.taskImgAddByBo.token = this.token
+            console.log(this.taskImgAddByBo);
+            let res = await synRequestPost("/task_img/add", this.taskImgAddByBo);
+            console.log(res);
+            this.addWindows = false;
+
 
         },
 
