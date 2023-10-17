@@ -52,7 +52,7 @@ public class TaskServiceImpl implements TaskService {
     public ResponseVo taskSelectByUserId(TaskSelectByUserIdBo taskSelectByUserIdBo) {
         String taskIdOfStr = (String) ThreadLocalUtil.mapThreadLocalOfJWT.get().get("userinfo").get("id");
         Long taskId = Long.valueOf(taskIdOfStr);
-        List<User> list = taskMapper.selectByUserIdTask(taskSelectByUserIdBo.getId());
+        List<Task> list = taskMapper.selectByUserIdTask(taskId);
 
         if (list == null || taskId == 0L) {
             return new ResponseVo("查询的数据不存在,", null, "0x500");

@@ -63,8 +63,7 @@ public interface TaskMapper {
     /**
      * @author zhuxinyu 2023-10-12
      *      根据id查询user数据
-     * @param id
      * @return
      */
-    public List<User> selectByUserIdTask(Long id);
+    public List<Task> selectByUserIdTask(Long id);
 }
