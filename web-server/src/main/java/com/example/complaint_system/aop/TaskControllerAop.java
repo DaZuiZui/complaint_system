@@ -13,4 +13,6 @@ public interface TaskControllerAop {
     public String taskAdd(JoinPoint joinPoint);
 
     public String taskSelectById(JoinPoint joinPoint);
+
+    public String taskUpdateById( JoinPoint joinPoint );
 }
