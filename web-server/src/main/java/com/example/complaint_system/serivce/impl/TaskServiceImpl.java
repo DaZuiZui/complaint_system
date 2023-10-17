@@ -31,11 +31,10 @@ public class TaskServiceImpl implements TaskService {
      */
     @Override
     public ResponseVo taskSelectById(TaskSelectByIdBo taskSelectByIdBo){
-        String taskIdOfStr = (String) ThreadLocalUtil.mapThreadLocalOfJWT.get().get("userinfo").get("id");
-        Long taskId = Long.valueOf(taskIdOfStr);
+
         Task task = taskMapper.selectByIdTask(taskSelectByIdBo.getId());
 
-        if (task == null || taskSelectByIdBo.getId() != taskId) {
+        if (task == null) {
             return new ResponseVo("查询的数据不存在,", null, "0x500");
         }
 
@@ -50,10 +49,10 @@ public class TaskServiceImpl implements TaskService {
      */
     @Override
     public ResponseVo taskAdd(TaskAddBo taskAddByIdBo){
-
+        String userIdOfStr = (String) ThreadLocalUtil.mapThreadLocalOfJWT.get().get("userinfo").get("id");
+        Long userId = Long.valueOf(userIdOfStr);
+        taskAddByIdBo.getTask().setCreateBy(userId);
         Long  aLong = taskMapper.addTask(taskAddByIdBo.getTask());
-
-
         if (aLong.longValue() == 0) {
             return new ResponseVo("增加失败",  null, "0x500");
         }
@@ -89,6 +88,10 @@ public class TaskServiceImpl implements TaskService {
      */
     @Override
     public ResponseVo taskUpdateById(TaskUpdateByIdBo taskUpdateByIdBo){
+        String taskIdOfStr = (String) ThreadLocalUtil.mapThreadLocalOfJWT.get().get("userinfo").get("id");
+        Long taskId = Long.valueOf(taskIdOfStr);
+        taskUpdateByIdBo.getTask().setUpdateBy(taskId);
+        taskUpdateByIdBo.getTask().setUpdateTime(new Date());
         Task task = taskUpdateByIdBo.getTask();
         Long numberOfOpertion = taskMapper.updateByIdTask(task);
 
