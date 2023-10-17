@@ -1,6 +1,7 @@
 package com.example.complaint_system.serivce.impl;
 
 import com.example.complaint_system.domain.Task;
+import com.example.complaint_system.domain.User;
 import com.example.complaint_system.domain.bo.*;
 import com.example.complaint_system.domain.vo.ResponseVo;
 import com.example.complaint_system.mapper.TaskMapper;
@@ -39,6 +40,25 @@ public class TaskServiceImpl implements TaskService {
         }
 
         return new ResponseVo("查询成功",task,"0x200");
+    }
+
+    /**
+     * @author zhuxinyu 2023-10-12
+     *      根据id查询user数据
+     * @param taskSelectByUserIdBo
+     * @return
+     */
+    @Override
+    public ResponseVo taskSelectByUserId(TaskSelectByUserIdBo taskSelectByUserIdBo) {
+        String taskIdOfStr = (String) ThreadLocalUtil.mapThreadLocalOfJWT.get().get("userinfo").get("id");
+        Long taskId = Long.valueOf(taskIdOfStr);
+        List<User> list = taskMapper.selectByUserIdTask(taskSelectByUserIdBo.getId());
+
+        if (list == null || taskId == 0L) {
+            return new ResponseVo("查询的数据不存在,", null, "0x500");
+        }
+
+        return new ResponseVo("查询成功",list,"0x200");
     }
 
     /**

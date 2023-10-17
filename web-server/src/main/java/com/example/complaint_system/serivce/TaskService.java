@@ -1,9 +1,6 @@
 package com.example.complaint_system.serivce;
 
-import com.example.complaint_system.domain.bo.TaskAddBo;
-import com.example.complaint_system.domain.bo.TaskDeleteByIdBo;
-import com.example.complaint_system.domain.bo.TaskSelectByIdBo;
-import com.example.complaint_system.domain.bo.TaskUpdateByIdBo;
+import com.example.complaint_system.domain.bo.*;
 import com.example.complaint_system.domain.vo.ResponseVo;
 
 /**
@@ -53,4 +50,12 @@ public interface TaskService {
      * @return
      */
     public ResponseVo taskSelectAll();
+
+    /**
+     * @author zhuxinyu 2023-10-12
+     *      user数据查询
+     * @param taskSelectByUserIdBo
+     * @return
+     */
+    public ResponseVo taskSelectByUserId(TaskSelectByUserIdBo taskSelectByUserIdBo);
 }

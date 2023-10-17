@@ -3,6 +3,7 @@ package com.example.complaint_system.aop.impl;
 import com.example.complaint_system.aop.TaskControllerAop;
 import com.example.complaint_system.domain.bo.TaskAddBo;
 import com.example.complaint_system.domain.bo.TaskSelectByIdBo;
+import com.example.complaint_system.domain.bo.TaskSelectByUserIdBo;
 import com.example.complaint_system.domain.bo.TaskUpdateByIdBo;
 import com.example.complaint_system.serivce.SystemService;
 import org.aspectj.lang.JoinPoint;
@@ -57,4 +58,20 @@ public class TaskControllerAopImpl implements TaskControllerAop {
         systemService.auth(token);
         return null;
     }
+
+    @Override
+    public String taskUpdateByUserId(JoinPoint joinPoint) {
+        return null;
+    }
+
+    @Override
+    @Before("execution(* com.example.complaint_system.controller.TaskController.taskSelectByUserId(..))")
+    public String taskSelectByUserId(JoinPoint joinPoint) {
+        Object[] args = joinPoint.getArgs();
+        TaskSelectByUserIdBo taskSelectByUserIdBos = (TaskSelectByUserIdBo) args[0];
+        String token = taskSelectByUserIdBos.getToken();
+        systemService.auth(token);
+        return null;
+    }
+
 }
