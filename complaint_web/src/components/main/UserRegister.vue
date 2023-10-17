@@ -153,13 +153,8 @@ export default {
                 alert("真实姓名不能为空!")
                 return
             }
-            if (this.user.name.length < 1) {
-                alert("真实姓名长度小于1,请重新输入!")
-                this.user.name = ""
-                return
-            }
-            if (this.user.username.length > 4) {
-                alert("真实姓名长度大于4,请重新输入!")
+            if (this.user.name.length < 2) {
+                alert("真实姓名长度小于2,请重新输入!")
                 this.user.name = ""
                 return
             }

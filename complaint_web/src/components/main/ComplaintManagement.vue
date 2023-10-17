@@ -1,11 +1,6 @@
 <template>
-    <section v-if="isCheck">
-
-        <el-button type="primary" @click="isCheck = false">返回</el-button>
-
-    </section>
     <!-- Main content -->
-    <section v-else>
+    <section>
         <div class="container">
             <table class="table">
                 <thead>
@@ -34,10 +29,9 @@
 
                             <el-drawer title="我是标题" :visible.sync="updateWindows" :with-header="false">
                                 <div>
-                                    用户名
+                                    投诉信息:
                                     <el-input v-model="taskInfo.context" placeholder="更改投诉信息"></el-input>
                                     <br>
-
                                     <br>
                                     <el-button type="primary" @click="updateTaskInfo()">确认修改</el-button>
                                 </div>
@@ -70,6 +64,11 @@
                 </div>
             </el-drawer>
 
+            <el-drawer title="我是标题"  size="60%" :visible.sync="isCheck" :with-header="false">
+                <div>
+                    <img width="100%" :src="taskImg.imgUrl" alt="">
+                </div>
+            </el-drawer>
             <el-pagination :page-size="100" :pager-count="11" @current-change="getMerchantInformation"
                 layout="prev, pager, next" :total="count">
             </el-pagination>
@@ -86,7 +85,9 @@ export default {
         return {
             //图片
             formData: new FormData,
-
+            taskImg:{
+                imgUrl:''
+            },
             token: getCookie("token"),
             //添加投诉信息
             taskAddByIdBo: {
@@ -141,6 +142,11 @@ export default {
                 token: '',
                 partId: '',
             },
+            //删除投诉图片
+            taskImgdeleteByIdBo: {
+                token: '',
+                partId: '',
+            },
             //修改投诉信息
             updataByIdBo: {
                 token: "",
@@ -156,6 +162,14 @@ export default {
                     imgUrl: '',
                     partId: ''
                 }
+            },
+            //修改投诉图片
+            taskImgUpdateByBo: {
+                token: '',
+                taskImg: {
+                    imgUrl: '',
+                    partId: ''
+                }
             }
         }
     },
@@ -165,10 +179,17 @@ export default {
     },
     methods: {
         async check(obj) {
-            this.isCheck = true
+            
             this.taskImgSelectByIdBo.partId = obj.id;
             let res = await synRequestPost("/task_img/select", this.taskImgSelectByIdBo);
             console.log(res);
+            if (res.code=='0x200') {
+                
+            this.taskImg = res.data
+            this.isCheck = true
+            }else{
+                alert('该条投诉没有图片信息.')
+            }
         },
         /**
          *  修改投诉信息
@@ -181,7 +202,6 @@ export default {
             let obj = await synRequestPost("/task/update", this.updataByIdBo);
             console.log(obj);
             alert(obj.message);
-
             this.updateWindows = false;
             this.getMerchantInformation(1);
         },
@@ -192,6 +212,7 @@ export default {
             this.selectByIdBo.token = this.token
             let obj = await synRequestPost("/task/select", this.selectByIdBo);
             this.taskInfo = obj.data;
+           
             this.updateWindows = true;
         },
 
@@ -206,7 +227,7 @@ export default {
             if (obj.code == "0x200") {
                 this.list = obj.data;
             }
-            console.log(this.list);
+            // console.log(this.list);
         },
 
         //删除用户通过id
@@ -214,6 +235,10 @@ export default {
             this.deleteByIdBo.id = id;
             this.deleteByIdBo.token = this.token;
             let obj = await synRequestPost("/task/delete", this.deleteByIdBo);
+            this.taskImgdeleteByIdBo.partId = obj.data
+            this.taskImgdeleteByIdBo.token = this.token
+            let res = await synRequestPost("/task_img/delete", this.taskImgdeleteByIdBo);
+            // console.log(res);
             alert(obj.message);
             this.getMerchantInformation(1);
 
@@ -226,22 +251,24 @@ export default {
             }
             this.taskAddByIdBo.token = this.token
             let obj = await synRequestPost("/task/add", this.taskAddByIdBo);
-            this.taskImgAddByBo.taskImg.partId = obj.data
-            const files = this.$refs.upload.uploadFiles;
-            // files.forEach(async (item, index) => {
-            // 遍历文件列表添加文件
-            this.formData.append("file", files[0].raw);
-            this.formData.append("token", this.token);
-            let uploadObj = await synRequestPost("/system/imgUpDown", this.formData);
-            this.taskImgAddByBo.taskImg.imgUrl = uploadObj.data
-            // });
-            // 这里是我请求额外携带的一个token参数
-            this.taskImgAddByBo.token = this.token
-            console.log(this.taskImgAddByBo);
-            let res = await synRequestPost("/task_img/add", this.taskImgAddByBo);
-            console.log(res);
+            if (this.$refs.upload.uploadFiles.length != 0) {
+                this.taskImgAddByBo.taskImg.partId = obj.data
+                const files = this.$refs.upload.uploadFiles;
+                // files.forEach(async (item, index) => {
+                // 遍历文件列表添加文件
+                this.formData.append("file", files[0].raw);
+                this.formData.append("token", this.token);
+                let uploadObj = await synRequestPost("/system/imgUpDown", this.formData);
+                this.taskImgAddByBo.taskImg.imgUrl = uploadObj.data
+                // });
+                // 这里是我请求额外携带的一个token参数
+                this.taskImgAddByBo.token = this.token
+                console.log(this.taskImgAddByBo);
+                let res = await synRequestPost("/task_img/add", this.taskImgAddByBo);
+                console.log(res);
+            }
             this.addWindows = false;
-
+            this.getMerchantInformation();
 
         },
 
@@ -269,4 +296,5 @@ li {
 a {
     color: #42b983;
 }
+
 </style>
