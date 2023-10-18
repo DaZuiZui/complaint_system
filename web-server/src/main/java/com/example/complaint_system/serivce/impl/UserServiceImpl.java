@@ -51,10 +51,10 @@ public class UserServiceImpl implements UserSerivce {
     }
 
     /**
-     * @param deleteByIdBo
-     * @return
      * @author hln 2023-10-11
      * 通过id删除用户
+     * @param deleteByIdBo
+     * @return ResponseVo.class
      */
     @Override
     public ResponseVo deleteById(UserDeleteByIdBo deleteByIdBo) {
@@ -70,7 +70,7 @@ public class UserServiceImpl implements UserSerivce {
      * @author hln 2023-10-11
      *    管理员查找用户通过id
      * @param selectByIdBo
-     * @return String.class
+     * @return ResponseVo.class
      */
     @Override
     public ResponseVo selectById(UserSelectByIdBo selectByIdBo) {
@@ -83,7 +83,7 @@ public class UserServiceImpl implements UserSerivce {
      * @author hln 2023-10-11
      *    管理员修改用户通过id
      * @param updataByIdBo
-     * @return String.class
+     * @return ResponseVo.class
      */
     @Override
     public ResponseVo updataById(UserUpdataByIdBo updataByIdBo) {
@@ -128,7 +128,7 @@ public class UserServiceImpl implements UserSerivce {
      * @author hln 2023-10-12
      *      查询所有用户功能
      * @param
-     * @return
+     * @return ResponseVo.clsss
      */
     @Override
     public ResponseVo userFindAll() {

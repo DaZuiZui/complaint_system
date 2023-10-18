@@ -53,6 +53,7 @@ public class TaskImgServiceImpl implements TaskImgService {
     public ResponseVo taskImgAdd(TaskImgAddByBo taskImgAddByBo) {
 
         Long aLong = taskImgMapper.addTaskImg(taskImgAddByBo.getTaskImg());
+
         if (aLong.longValue() == 0){
             return new ResponseVo("增加失败",  null, "0x500");
         }
@@ -69,8 +70,8 @@ public class TaskImgServiceImpl implements TaskImgService {
     public ResponseVo taskImgDeleteByPartId(TaskImgDeleteByPartIdBo taskImgDeleteByPartIdBo) {
 
         Long partId = taskImgDeleteByPartIdBo.getPartId();
-
         Long numbersOfOpetion = taskImgMapper.deleteByPartIdTaskImg(partId);
+
         if (numbersOfOpetion.longValue() == 0L) {
             return new ResponseVo("删除失败", null, "0x500");
         }
