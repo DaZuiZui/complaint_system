@@ -2,6 +2,10 @@ package com.example.complaint_system.domain.bo;
 
 import java.io.Serializable;
 
+/**
+ * @auhtor JasperHan
+ * 通过userid查询task
+ */
 public class TaskSelectByUserIdBo implements Serializable {
     private String token;
     private String username;
