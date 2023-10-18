@@ -20,6 +20,7 @@ public class TaskControllerAopImpl implements TaskControllerAop {
     private SystemService systemService;
 
     /**
+     * @author hln
      * 添加task 主要做了鉴权
      * @param joinPoint
      * @return
@@ -35,6 +36,7 @@ public class TaskControllerAopImpl implements TaskControllerAop {
     }
 
     /**
+     * @author hln
      * 做了权限验证
      * @param joinPoint
      * @return

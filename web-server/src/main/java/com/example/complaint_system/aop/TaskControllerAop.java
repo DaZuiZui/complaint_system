@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 public interface TaskControllerAop {
     /**
+     * @author hln
      * 添加task 主要做了鉴权
      * @param joinPoint
      * @return
@@ -17,9 +18,21 @@ public interface TaskControllerAop {
 
     public String taskUpdateById( JoinPoint joinPoint );
 
+    /**
+     * @author hln
+     *  做了权限坚定
+     * @param joinPoint
+     * @return
+     */
     @Before("execution(* com.example.complaint_system.controller.TaskController.taskUpdateById(..))")
     String taskUpdateByUserId(JoinPoint joinPoint);
 
+    /**
+     * @author hln
+     *  做了权限坚定
+     * @param joinPoint
+     * @return
+     */
     @Before("execution(* com.example.complaint_system.controller.TaskController.taskSelectByUserId(..))")
     String taskSelectByUserId(JoinPoint joinPoint);
 }
