@@ -11,7 +11,7 @@
                         <th scope="col">发布时间</th>
                         <th scope="col">最后一次修改时间</th>
                         <th scope="col">操作</th>
-                        <th><button @click="addWindows = true"> 增加 </button></th>
+                        <th><button class="but" @click="addWindows = true"> 增加 </button></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -29,11 +29,12 @@
 
                             <el-drawer title="我是标题" :visible.sync="updateWindows" :with-header="false">
                                 <div>
-                                    投诉信息:
-                                    <el-input v-model="taskInfo.context" placeholder="更改投诉信息"></el-input>
-                                    <br>
-                                    <br>
-                                    <el-button type="primary" @click="updateTaskInfo()">确认修改</el-button>
+                                    <h4>投诉信息:</h4>
+                                    <div class="check">
+                                        <el-input v-model="taskInfo.context" placeholder="更改投诉信息"></el-input>
+                                    </div>
+                                    
+                                    <el-button style="margin-top: 50px;" type="primary" @click="updateTaskInfo()">确认修改</el-button>
                                 </div>
                             </el-drawer>
 
@@ -43,10 +44,10 @@
                 </tbody>
             </table>
             <el-drawer title="我是标题" :visible.sync="addWindows" :with-header="false">
-                <div>
-                    投诉信息
-                    <el-input v-model="taskAddByIdBo.task.context" placeholder="输入想要投诉的信息"></el-input>
-                    <br>
+                <div class="check">
+                    <h4>
+                        投诉信息
+                    </h4> <el-input v-model="taskAddByIdBo.task.context" placeholder="输入想要投诉的信息"></el-input>
                     <el-upload class="upload-demo" ref="upload" action="#" :auto-upload="false" drag :http-request="addTask"
                         :limit='1'>
                         <i class="el-icon-upload"></i>
@@ -55,7 +56,6 @@
                             只能上传jpg/png文件，且不超过500kb
                         </div>
                     </el-upload>
-                    <br>
                     <span slot="footer" class="dialog-footer">
                         <el-button @click="addWindows = false">取 消</el-button>
                         <el-button type="primary" @click="addTask()">确 定</el-button>
@@ -64,7 +64,7 @@
                 </div>
             </el-drawer>
 
-            <el-drawer title="我是标题"  size="60%" :visible.sync="isCheck" :with-header="false">
+            <el-drawer title="我是标题" size="60%" :visible.sync="isCheck" :with-header="false">
                 <div>
                     <img width="100%" :src="taskImg.imgUrl" alt="">
                 </div>
@@ -85,8 +85,8 @@ export default {
         return {
             //图片
             formData: new FormData,
-            taskImg:{
-                imgUrl:''
+            taskImg: {
+                imgUrl: ''
             },
             token: getCookie("token"),
             //添加投诉信息
@@ -179,15 +179,15 @@ export default {
     },
     methods: {
         async check(obj) {
-            
+
             this.taskImgSelectByIdBo.partId = obj.id;
             let res = await synRequestPost("/task_img/select", this.taskImgSelectByIdBo);
             console.log(res);
-            if (res.code=='0x200') {
-                
-            this.taskImg = res.data
-            this.isCheck = true
-            }else{
+            if (res.code == '0x200') {
+
+                this.taskImg = res.data
+                this.isCheck = true
+            } else {
                 alert('该条投诉没有图片信息.')
             }
         },
@@ -212,7 +212,7 @@ export default {
             this.selectByIdBo.token = this.token
             let obj = await synRequestPost("/task/select", this.selectByIdBo);
             this.taskInfo = obj.data;
-           
+
             this.updateWindows = true;
         },
 
@@ -296,5 +296,35 @@ li {
 a {
     color: #42b983;
 }
+.but{
+    border: none;
+    background-color: #fff;
+    font-size: 15px;
+}
+>>>.el-drawer__body {
 
+    margin: 10px 0;
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+}
+
+>>>.el-drawer__body .check {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+>>>.el-drawer__body .check div {
+    margin-top: 20px;
+}
+
+>>>.el-drawer__body .check span {
+    margin-top: 20px;
+}
+>>>.el-drawer__body .check button{
+    margin-top: 20px;
+}
 </style>

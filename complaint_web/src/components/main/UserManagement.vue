@@ -26,38 +26,34 @@
                 <el-link type="primary" @click="openUpdateUserInfoWindows(obj.id)">修改</el-link>
 
                 <el-drawer title="我是标题" :visible.sync="updateWindows" :with-header="false">
-                  <div>
+                  <div class="check">
                     <div>
                       名字:
                       <el-input v-model="userInfo.name" placeholder="更改名字"></el-input>
                     </div>
-                    <br><br>
                     <div>
                       用户名:
                       <el-input v-model="userInfo.username" placeholder="更改用户名"></el-input>
                     </div>
-                    <br><br>
                     <div>
                       密码:
                       <el-input v-model="userInfo.password" placeholder="更改密码"></el-input>
                     </div>
-                    <br><br>
                     <div>
                       班级:
                       <el-input v-model="userInfo.org" placeholder="更改班级"></el-input>
-                    </div> <br><br>
+                    </div>
                     <div>
                       学院:
                       <el-select v-model="input" placeholder="请选择">
-                                    <el-option v-for="item in college" :key="item.value" :label="item.text"
-                                        :value="item.value">
-                                    </el-option>
-                                </el-select>
-                    </div> <br><br>
+                        <el-option v-for="item in college" :key="item.value" :label="item.text" :value="item.value">
+                        </el-option>
+                      </el-select>
+                    </div>
                     <div>
                       年级:
                       <el-input v-model="userInfo.grade" placeholder="更改年级"></el-input>
-                    </div> <br><br>
+                    </div>
                     <div>
                       学号:
                       <el-input v-model="userInfo.studentId" placeholder="更改学号"></el-input>
@@ -81,87 +77,88 @@
     </section>
 
     <!-- View content  -->
-    <section v-else class="check">
-      <!-- 用户名 -->
-      <div>
-        <div class="key">
-          用户名
+    <section v-else>
+      <div class="check">
+        <!-- 用户名 -->
+        <div>
+          <div class="key">
+            用户名
+          </div>
+          <div class="value">
+            {{ schoolView.username }}
+          </div>
         </div>
-        <div class="value">
-          {{ schoolView.username }}
+
+        <!-- 密码 -->
+        <div>
+          <div class="key">
+            密码
+          </div>
+          <div class="value">
+            {{ schoolView.password }}
+          </div>
+        </div>
+
+        <!-- 名字 -->
+        <div v-if="schoolView.name">
+          <div class="key">
+            名字
+          </div>
+          <div class="value">
+            {{ schoolView.name }}
+          </div>
+        </div>
+
+        <!-- 班级 -->
+        <div v-if="schoolView.org">
+          <div class="key">
+            班级
+          </div>
+          <div class="value">
+            {{ schoolView.org }}
+          </div>
+        </div>
+
+        <!-- 学院 -->
+        <div v-if="schoolView.college">
+          <div class="key">
+            学院
+          </div>
+          <div class="value">
+            {{ schoolView.college }}
+          </div>
+        </div>
+
+
+        <!-- 年级 -->
+        <div v-if="schoolView.grade">
+          <div class="key">
+            年级
+          </div>
+          <div class="value">
+            {{ schoolView.grade }}
+          </div>
+        </div>
+
+        <!-- 学号 -->
+        <div v-if="schoolView.student_id">
+          <div class="key">
+            学号
+          </div>
+          <div class="value">
+            {{ schoolView.student_id }}
+          </div>
+        </div>
+
+        <div>
+          <div class="key">
+            <el-link type="primary" @click="openUpdateUserInfoWindows(schoolView.id)">修改</el-link>
+          </div>
+          <div class="value">
+            <el-link type="success" @click="deleteById(schoolView.id)">删除</el-link>
+          </div>
         </div>
       </div>
-
-      <!-- 密码 -->
-      <div>
-        <div class="key">
-          密码
-        </div>
-        <div class="value">
-          {{ schoolView.password }}
-        </div>
-      </div>
-
-      <!-- 名字 -->
-      <div v-if="schoolView.name">
-        <div class="key">
-          名字
-        </div>
-        <div class="value">
-          {{ schoolView.name }}
-        </div>
-      </div>
-
-      <!-- 班级 -->
-      <div v-if="schoolView.org">
-        <div class="key">
-          班级
-        </div>
-        <div class="value">
-          {{ schoolView.org }}
-        </div>
-      </div>
-
-      <!-- 学院 -->
-      <div v-if="schoolView.college">
-        <div class="key">
-          学院
-        </div>
-        <div class="value">
-          {{ schoolView.college }}
-        </div>
-      </div>
-
-
-      <!-- 年级 -->
-      <div v-if="schoolView.grade">
-        <div class="key">
-          年级
-        </div>
-        <div class="value">
-          {{ schoolView.grade }}
-        </div>
-      </div>
-
-      <!-- 学号 -->
-      <div v-if="schoolView.student_id">
-        <div class="key">
-          学号
-        </div>
-        <div class="value">
-          {{ schoolView.student_id }}
-        </div>
-      </div>
-
-      <div>
-        <div class="key">
-          <el-link type="primary" @click="openUpdateUserInfoWindows(schoolView.id)">修改</el-link>
-        </div>
-        <div class="value">
-          <el-link type="success" @click="deleteById(schoolView.id)">删除</el-link>
-        </div>
-      </div>
-
 
     </section>
 
@@ -220,10 +217,10 @@ export default {
         username: "",
         password: "",
         name: "",
-        org:'',
-        college:'',
-        grade:'',
-        studentId:'',
+        org: '',
+        college: '',
+        grade: '',
+        studentId: '',
       },
       //更新用户信息
       updataByIdBo: {
@@ -231,17 +228,17 @@ export default {
         user: {
           id: -1,
           username: "",
-        password: "",
-        name: "",
-        org:'',
-        college:'',
-        grade:'',
-        studentId:'',
+          password: "",
+          name: "",
+          org: '',
+          college: '',
+          grade: '',
+          studentId: '',
         }
       },
       //查看
       view: true,
-      input:'',
+      input: '',
       //学院信息
       college: [
         {
@@ -374,6 +371,35 @@ a {
 .value {
   margin: 15px;
   font-size: 20px;
+}
+>>>.el-drawer__body {
+
+margin: 10px 0;
+/* display: flex;
+align-items: center;
+justify-content: center; */
+}
+
+>>>.el-drawer__body .check {
+margin-top: 50px;
+display: flex;
+flex-direction: column;
+justify-content: space-around;
+align-items: stretch;
+}
+
+>>>.el-drawer__body .check div {
+margin-top: 20px;
+}
+
+>>>.el-drawer__body .check span {
+margin-top: 20px;
+}
+>>>.el-drawer__body .check button{
+margin-top: 20px;
+}
+>>>.el-select{
+  width: 100%;
 }
 </style>
     
